@@ -7,6 +7,7 @@ import Button from '@mui/material/Button'
 import InputAdornment from '@mui/material/InputAdornment'
 import Link from 'next/link'
 import { useTheme, useMediaQuery } from '@mui/material'
+import { Fragment } from 'react'
 
 const Links = [
     {
@@ -164,14 +165,14 @@ const Footer = () => {
                             </Typography>
                             <br /><br />
                             {
-                                Links.map(({ link, path }, index) => <>
-                                    <Link key={ link } href={ path } passHref>
+                                Links.map(({ link, path }, index) => <Fragment key={ link }>
+                                    <Link href={ path } passHref>
                                         <Typography sx={ { cursor: 'pointer' } }>
                                             { link }
                                         </Typography>
                                     </Link>
                                     { Links.length === index + 1 ? <></> : <br /> }
-                                </>)
+                                </Fragment>)
                             }
                         </Grid>
                     </Grid>
@@ -186,14 +187,14 @@ const Footer = () => {
                             </Typography>
                             <br /><br />
                             {
-                                Projects.map(({ project, path }, index) => <>
-                                    <Link key={ project } href={ path } passHref>
+                                Projects.map(({ project, path }, index) => <Fragment key={ project }>
+                                    <Link href={ path } passHref>
                                         <Typography sx={ { cursor: 'pointer' } }>
                                             { project }
                                         </Typography>
                                     </Link>
                                     { Projects.length === index + 1 ? <></> : <br /> }
-                                </>)
+                                </Fragment>)
                             }
                         </Grid>
                     </Grid>

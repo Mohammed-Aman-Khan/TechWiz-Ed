@@ -1,6 +1,8 @@
 import '../styles/globals.css'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import Paper from '@mui/material/Paper'
+import HeaderNav from '../components/HeaderNav'
+import Footer from '../components/Footer'
 
 const ThemeWrapper = ({ children }) => {
     return <ThemeProvider
@@ -10,7 +12,7 @@ const ThemeWrapper = ({ children }) => {
                     mode: 'light',
                 },
                 typography: {
-                    fontFamily: [ 'Poppins', 'sans-serif' ].join(', '),
+                    fontFamily: [ 'Poppins', 'Inter', 'sans-serif' ].join(', '),
                 },
             })
         }
@@ -24,17 +26,27 @@ const BackgroundWrapper = ({ children }) => {
         square
         elevation={ 0 }
         style={ {
-            minHeight: '100vh',
+            height: '100vh',
         } }
     >
         { children }
     </Paper>
 }
 
+const HeaderFooterWrapper = ({ children }) => {
+    return <>
+        <HeaderNav />
+        { children }
+        <Footer />
+    </>
+}
+
 const MyApp = ({ Component, pageProps }) => {
     return <ThemeWrapper>
         <BackgroundWrapper>
-            <Component { ...pageProps } />
+            <HeaderFooterWrapper>
+                <Component { ...pageProps } />
+            </HeaderFooterWrapper>
         </BackgroundWrapper>
     </ThemeWrapper>
 }
