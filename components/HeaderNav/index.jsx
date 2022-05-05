@@ -31,32 +31,33 @@ const Links = [
 const HeaderNav = () => {
 
     const router = useRouter()
-    const [scrollY, setScrollY] = useState(0)
+    const [ scrollY, setScrollY ] = useState(0)
 
     useEffect(() => {
         const handleScroll = () => setScrollY(window.scrollY)
         handleScroll()
         window.addEventListener("scroll", handleScroll)
         return () => window.removeEventListener("scroll", handleScroll)
-    }, []);
-    console.log(scrollY)
+    }, [])
+
     return <Grid
         container
-        sx={{
+        sx={ {
             padding: '30px 150px 30px 150px',
             position: 'fixed',
             top: 0,
             left: 0,
             backgroundColor: 'white',
-            boxShadow: scrollY ? '0px 5px 50px -10px rgba(0, 0, 0, 0.2)' : 'none'
-        }}
+            boxShadow: scrollY ? '0px 5px 50px -10px rgba(0, 0, 0, 0.2)' : 'none',
+            zIndex: 2147483647,
+        } }
         justifyContent='space-between'
         alignItems='center'
         flexDirection='row'
         direction='row'
     >
         <Grid item>
-            <Typography variant='h4' sx={{ fontWeight: 700 }}>
+            <Typography variant='h4' sx={ { fontWeight: 700 } }>
                 LOGO
             </Typography>
         </Grid>
@@ -64,7 +65,7 @@ const HeaderNav = () => {
             item
             justifyContent='center'
             alignItems='center'
-            sx={{ flexGrow: 0.2 }}
+            sx={ { flexGrow: 0.2 } }
         >
             <Grid
                 container
@@ -77,10 +78,10 @@ const HeaderNav = () => {
                         const currentPath = router.pathname
                         const current = currentPath.replace('/', '') === path.replace('/', '')
 
-                        return <Link key={ path } href={ path } passHref={ path }>
+                        return <Link key={ path } href={ path } passHref>
                             <Grid item>
                                 <Typography
-                                    sx={{
+                                    sx={ {
                                         fontStyle: 'normal',
                                         fontWeight: current ? 700 : 500,
                                         fontSize: '20px',
@@ -88,7 +89,7 @@ const HeaderNav = () => {
                                         cursor: 'pointer',
                                         color: current ? '#5080FF' : '#6E7387',
                                         lineHeight: '40px'
-                                    }}
+                                    } }
                                 >
                                     { link }
                                 </Typography>
@@ -100,15 +101,15 @@ const HeaderNav = () => {
         </Grid>
         <Grid item>
             <Button
-                sx={{
+                sx={ {
                     backgroundColor: 'black',
-                    color:'white',
+                    color: 'white',
                     borderRadius: '25px',
                     padding: '10px 20px 10px 20px',
-                    '&:hover' : {
+                    '&:hover': {
                         color: 'black',
                     }
-                }}
+                } }
             >
                 Start Free Trial
             </Button>

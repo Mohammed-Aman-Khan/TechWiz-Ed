@@ -8,6 +8,10 @@ body {
   box-sizing: border-box;
 }
 
-section {
+.section-100vh {
   height: 100vh;
+}
+
+.section-min-100vh {
+  min-height: 100vh;
 }
