@@ -77,7 +77,7 @@ const HeaderNav = () => {
                         const currentPath = router.pathname
                         const current = currentPath.replace('/', '') === path.replace('/', '')
 
-                        return <Link key={ path } href={ path }>
+                        return <Link key={ path } href={ path } passHref={ path }>
                             <Grid item>
                                 <Typography
                                     sx={{
