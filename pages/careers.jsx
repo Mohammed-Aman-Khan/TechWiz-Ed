@@ -25,18 +25,18 @@ const HeroText = ({ children, small = false }) => {
 
 const Input = ({ label = '' }) => {
     return <TextField
-        sx={ { marginBottom: '20px' } }
+        sx={ { marginBottom: '15px' } }
         fullWidth
         label={ label }
         variant='standard'
         inputProps={ {
             sx: {
-                fontSize: '30px',
+                fontSize: '20px',
             }
         } }
         InputLabelProps={ {
             sx: {
-                fontSize: '30px',
+                fontSize: '20px',
             }
         } }
     />
@@ -48,13 +48,13 @@ const ChipButton = ({ label = '', selected = false, onClick = () => { } }) => {
         sx={ {
             fontWeight: 500,
             fontFamily: 'Inter',
-            fontSize: '30px',
-            lineHeight: '40px',
+            fontSize: '25px',
+            lineHeight: '30px',
             cursor: 'pointer',
             color: selected ? 'white' : 'black',
             backgroundColor: selected ? 'black' : 'white',
             border: selected ? 'none' : '2px solid lightgrey',
-            padding: '30px',
+            padding: '20px',
             borderRadius: '50px',
         } }
         onClick={ onClick }
@@ -67,7 +67,7 @@ const Careers = () => {
     const [ files, setFiles ] = useState([])
 
     return <>
-        <section className="section-min-100vh">
+        <section className="section-100vh">
             <Grid
                 container
                 sx={ { height: '100%', padding: '125px 150px 125px 150px' } }
