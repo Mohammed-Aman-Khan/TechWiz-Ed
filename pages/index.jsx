@@ -9,13 +9,14 @@ import AccordionDetails from '@mui/material/AccordionDetails'
 import AccordionSummary from '@mui/material/AccordionSummary'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import { styled } from '@mui/material/styles'
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 import Divider from '@mui/material/Divider'
 import Chip from '@mui/material/Chip'
+import { useBreakpoint, usePadding, vh, vw } from '../util/responsive'
 
-const HeroText = ({ children, style = {} }) => {
+const HeroText = ({ children, style = {}, small }) => {
     return <Typography
-        variant='h1'
+        variant={ small ? 'h3' : 'h1' }
         sx={ {
             fontWeight: 700,
             display: 'inline-block',
@@ -31,11 +32,12 @@ const WhatCanItDo = ({
     color,
     number,
     text,
+    small,
 }) => {
     return <Paper
         elevation={ 0 }
         sx={ {
-            padding: '20px',
+            padding: small ? '10px' : '20px',
         } }
     >
         <Chip
@@ -45,24 +47,26 @@ const WhatCanItDo = ({
                 color: 'white',
             } }
         />
-        <br /><br />
+        <br />
+        { small ? <br /> : <></> }
         <Typography
             sx={ {
                 fontFamily: 'Poppins',
-                fontWeight: 700,
-                fontSize: '40px',
-                lineHeigth: '60px',
+                fontWeight: small ? 600 : 700,
+                fontSize: small ? '25px' : '40px',
+                lineHeigth: small ? '35px' : '60px',
             } }
         >
             { title }
         </Typography>
-        <br /><br />
+        <br />
+        { small ? <br /> : <></> }
         <Typography
             sx={ {
                 fontFamily: 'Poppins',
                 fontWeight: 400,
-                fontSize: '20px',
-                lineHeigth: '34px',
+                fontSize: small ? '15px' : '20px',
+                lineHeigth: small ? '25px' : '34px',
                 color: '#6E7387',
             } }
         >
@@ -128,18 +132,69 @@ const testimonials = [
     },
 ]
 
+const whatCanEdDo = [
+    {
+        title: 'Supports Arduino',
+        text: 'The flexible nature of Arduino lets the user have easy access to control GPIO pins and use variety of communication protocols to interface various sensors and internal hardware of the device.',
+        color: '#AAA7FF',
+        number: '01',
+    },
+    {
+        title: 'GSM, Wi-Fi, Bluetooth',
+        text: 'GSM give access to calls and SMS whereas Wi-Fi gives access to different internet protocols and APIs.While Bluetooth can connect to different devices, making this IoT enabled smart device.',
+        color: '#FFB78D',
+        number: '02',
+    },
+    {
+        title: 'Camera & Touch Screen Display',
+        text: 'The device gives low level access to camera and lets user manipulate pictures by using various ML models.The user can interact with device through various touch gestures.',
+        color: '#86E195',
+        number: '03',
+    },
+]
+
+const questions = [
+    {
+        question: 'How does it work?',
+        answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit massa diam in fermentum morbi proin et vestibulum sodales.',
+    },
+    {
+        question: 'Are there any additional charges?',
+        answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit massa diam in fermentum morbi proin et vestibulum sodales.',
+    },
+    {
+        question: 'How can I purchase the product?',
+        answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit massa diam in fermentum morbi proin et vestibulum sodales.',
+    },
+    {
+        question: 'What features do you offer an what not?',
+        answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit massa diam in fermentum morbi proin et vestibulum sodales.',
+    },
+]
+
 const LandingPage = () => {
+
+    const small = useBreakpoint()
+    const containerPadding = usePadding('container')
+    const [ expanded, setExpanded ] = useState(questions[ 0 ].question)
+
+    const handleChange = (panel) => (event, newExpanded) => {
+        setExpanded(newExpanded ? panel : false)
+    }
+
     return <>
         <section className='section-100vh'>
             <Grid
                 container
-                sx={ { height: '100%', padding: '125px 150px 125px 150px' } }
+                className={ small && 'center' }
+                sx={ { height: '100%', padding: containerPadding } }
                 alignItems='center'
                 justifyContent='space-between'
                 flexDirection='row'
             >
                 <Grid item flexDirection='column'>
                     <HeroText
+                        small={ small }
                         style={ {
                             background: 'linear-gradient(96.89deg, #5A87FF 3.1%, #8C58FB 36.8%)',
                             WebkitBackgroundClip: 'text',
@@ -149,11 +204,14 @@ const LandingPage = () => {
                         Go on,
                     </HeroText>
                     <br />
-                    <HeroText>
+                    <HeroText
+                        small={ small }
+                    >
                         Get your
                     </HeroText>
                     <br />
                     <HeroText
+                        small={ small }
                         style={ {
                             background: 'linear-gradient(96.89deg, #5A87FF 3.1%, #8C58FB 36.8%)',
                             WebkitBackgroundClip: 'text',
@@ -162,30 +220,34 @@ const LandingPage = () => {
                     >
                         Techwiz
                     </HeroText>
-                    <HeroText>&nbsp;out.</HeroText>
+                    <HeroText
+                        small={ small }
+                    >
+                        &nbsp;out.
+                    </HeroText>
                     <br />
                     <Typography
                         sx={ {
                             fontFamily: 'Poppins',
                             color: '#6E7387',
-                            maxWidth: '600px',
-                            lineHeight: '45px',
-                            fontSize: ' 24px'
+                            maxWidth: small ? '90%' : '600px',
+                            lineHeight: small ? '35px' : '45px',
+                            fontSize: small ? '18px' : '24px'
                         } }
                     >
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus quis vulputate ipsum, massa ac suspendisse laoreet amet egestas. Felis iaculis.
                     </Typography>
                     <br /><br />
                     <Button
-                        size='large'
+                        size={ small ? 'medium' : 'large' }
                         sx={ {
                             backgroundColor: '#5080FF',
                             color: 'white',
-                            fontWeight: 600,
-                            fontSize: '25px',
-                            height: '70px',
+                            fontWeight: small ? 500 : 600,
+                            fontSize: small ? '18px' : '25px',
+                            height: small ? '40px' : '70px',
                             borderRadius: '40px',
-                            padding: '15px 30px 15px 30px',
+                            padding: small ? '10px 15px 10px 15px' : '15px 30px 15px 30px',
                             '&:hover': {
                                 color: '#5080FF',
                             }
@@ -195,34 +257,35 @@ const LandingPage = () => {
                     </Button>
                     &nbsp;&nbsp;&nbsp;
                     <Button
-                        size='large'
+                        size={ small ? 'medium' : 'large' }
                         variant="link"
                         sx={ {
-                            fontWeight: 600,
-                            fontSize: '25px',
-                            height: '70px',
+                            fontWeight: small ? 500 : 600,
+                            fontSize: small ? '18px' : '25px',
+                            height: small ? '40px' : '70px',
                             borderRadius: '40px',
-                            padding: '15px 30px 15px 30px',
+                            padding: small ? '10px 15px 10px 15px' : '15px 30px 15px 30px',
                         } }
                     >
                         Learn More
                     </Button>
                 </Grid>
                 <Grid item>
-                    <img src='/big-screen-hero.svg' alt="Illustration" style={ { height: '85vh' } } />
+                    <img src='/big-screen-hero.svg' alt="Illustration" style={ { height: small ? vh(40) : vh(75) } } />
                 </Grid>
             </Grid>
         </section>
         <section className='section-min-100vh'>
             <Grid
                 container
-                sx={ { height: '100%', padding: '125px 150px 125px 150px' } }
+                className={ small && 'center' }
+                sx={ { height: '100%', padding: containerPadding } }
                 alignItems='center'
                 justifyContent='center'
             >
                 <center>
                     <Typography
-                        variant='h2'
+                        variant={ small ? 'h4' : 'h2' }
                         style={ {
                             fontFamily: 'Poppins',
                             fontWeight: 600,
@@ -235,29 +298,30 @@ const LandingPage = () => {
                         sx={ {
                             fontFamily: 'Poppins',
                             color: '#6E7387',
-                            maxWidth: '1200px',
-                            lineHeight: '51px',
-                            fontSize: ' 30px'
+                            maxWidth: small ? '90%' : '1200px',
+                            lineHeight: small ? '35px' : '51px',
+                            fontSize: small ? '20px' : '30px'
                         } }
                     >
                         The Ed-Phone is an innovative product with the sole purpose of revolutionizing technical education.
                         The flexibility and features of this product enables users to learn cutting-edge technology through
                         exciting and fun-filled experience.
                     </Typography>
-                    <img src="/floating ed.png" alt="Floating Ed" style={ { width: '75vh', height: 'auto', marginTop: 150 } } />
+                    <img src="/floating ed.png" alt="Floating Ed" style={ { width: vh(90), maxWidth: vw(500), height: 'auto', marginTop: 150 } } />
                 </center>
             </Grid>
         </section>
         <section className='section-min-100vh'>
             <Grid
                 container
-                sx={ { height: '100%', padding: '125px 150px 125px 150px' } }
-                alignItems='center'
+                className={ small && 'center' }
+                sx={ { height: '100%', padding: containerPadding } }
+                alignItems={ small && 'center' }
                 justifyContent='center'
             >
                 <center>
                     <Typography
-                        variant='h2'
+                        variant={ small ? 'h4' : 'h2' }
                         style={ {
                             fontFamily: 'Poppins',
                             fontWeight: 600,
@@ -270,9 +334,9 @@ const LandingPage = () => {
                         sx={ {
                             fontFamily: 'Poppins',
                             color: '#6E7387',
-                            maxWidth: '600px',
-                            lineHeight: '51px',
-                            fontSize: ' 30px'
+                            maxWidth: small ? '90%' : '1200px',
+                            lineHeight: small ? '35px' : '51px',
+                            fontSize: small ? '20px' : '30px'
                         } }
                     >
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam
@@ -281,72 +345,63 @@ const LandingPage = () => {
                 <Grid item xs={ 12 }>&nbsp;</Grid>
                 <Grid item xs={ 12 }>&nbsp;</Grid>
                 <Grid item xs={ 12 }>&nbsp;</Grid>
+                <Grid item xs={ 12 }>&nbsp;</Grid>
+                <Grid item xs={ 12 }>&nbsp;</Grid>
+                <Grid item xs={ 12 }>&nbsp;</Grid>
                 <Grid
                     container
-                    justifyContent="space-between"
-                    flexDirection="row"
+                    spacing={ small ? 5 : 10 }
+                    className={ small && 'center' }
                 >
                     <Grid
-                        item container
-                        sx={ {
-                            width: '48%',
-                        } }
+                        container item={ !small }
+                        xs={ 12 } sm={ 12 } md={ 12 } lg={ 12 } xl={ 6 }
                     >
                         {
-                            [
-                                {
-                                    title: 'Supports Arduino',
-                                    text: 'The flexible nature of Arduino lets the user have easy access to control GPIO pins and use variety of communication protocols to interface various sensors and internal hardware of the device.',
-                                    color: '#AAA7FF',
-                                    number: '01',
-                                },
-                                {
-                                    title: 'GSM, Wi-Fi, Bluetooth',
-                                    text: 'GSM give access to calls and SMS whereas Wi-Fi gives access to different internet protocols and APIs.While Bluetooth can connect to different devices, making this IoT enabled smart device.',
-                                    color: '#FFB78D',
-                                    number: '02',
-                                },
-                                {
-                                    title: 'Camera & Touch Screen Display',
-                                    text: 'The device gives low level access to camera and lets user manipulate pictures by using various ML models.The user can interact with device through various touch gestures.',
-                                    color: '#86E195',
-                                    number: '03',
-                                },
-                            ].map(({
-                                title,
-                                text,
-                                color,
-                                number,
-                            }) =>
-                                <Grid
-                                    item
-                                    xs={ 12 }
-                                    key={ title }
-                                >
-                                    <WhatCanItDo
-                                        { ...{
-                                            title,
-                                            text,
-                                            color,
-                                            number,
-                                        } }
-                                    />
-                                </Grid>
-                            )
+                            whatCanEdDo
+                                .map(({
+                                    title,
+                                    text,
+                                    color,
+                                    number,
+                                }) =>
+                                    <Grid
+                                        item
+                                        xs={ 12 }
+                                        key={ title }
+                                    >
+                                        <WhatCanItDo
+                                            { ...{
+                                                title,
+                                                text,
+                                                color,
+                                                number,
+                                                small,
+                                            } }
+                                        />
+                                    </Grid>
+                                )
                         }
                     </Grid>
                     <Grid
-                        item container
+                        className={ small && 'center' }
+                        xs={ 12 } sm={ 12 } md={ 12 } lg={ 12 } xl={ 6 }
                         sx={ {
-                            width: '48%',
                             backgroundColor: '#BEBDFF',
-                            height: '100%',
+                            height: small ? vh(40) : '100%',
                             borderRadius: '50px'
                         } }
                         justifyContent='center'
                         alignItems='center'
                     >
-                        <img src='https://images.ctfassets.net/tbduj203nkkk/2U2uWY7lYIsWMSyaw4MaOS/ce3790e1a12784d988bfc0dd0ca7a000/Night2.png' alt="The Ed Phone" style={ { width: '75%', height: 'auto' } } />
+                        <img
+                            src='https://images.ctfassets.net/tbduj203nkkk/2U2uWY7lYIsWMSyaw4MaOS/ce3790e1a12784d988bfc0dd0ca7a000/Night2.png'
+                            alt="The Ed Phone"
+                            style={ small ?
+                                { width: 'auto', height: '100%' } :
+                                { width: '75%', height: 'auto' }
+                            }
+                        />
                     </Grid>
                 </Grid>
             </Grid>
@@ -354,13 +409,14 @@ const LandingPage = () => {
         <section className='section-100vh'>
             <Grid
                 container
-                sx={ { height: '100%', padding: '125px 150px 125px 150px' } }
+                className={ small && 'center' }
+                sx={ { height: '100%', padding: containerPadding } }
                 alignItems='center'
                 justifyContent='center'
             >
                 <center>
                     <Typography
-                        variant='h2'
+                        variant={ small ? 'h4' : 'h2' }
                         style={ {
                             fontFamily: 'Poppins',
                             fontWeight: 600,
@@ -373,9 +429,9 @@ const LandingPage = () => {
                         sx={ {
                             fontFamily: 'Poppins',
                             color: '#6E7387',
-                            maxWidth: '600px',
-                            lineHeight: '51px',
-                            fontSize: ' 30px'
+                            maxWidth: small ? '100%' : '1200px',
+                            lineHeight: small ? '35px' : '51px',
+                            fontSize: small ? '20px' : '30px'
                         } }
                     >
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam
@@ -405,28 +461,30 @@ const LandingPage = () => {
         <section className='section-100vh'>
             <Grid
                 container
-                sx={ { height: '100%', padding: '125px 150px 125px 150px' } }
+                className={ small && 'center' }
+                sx={ { height: '100%', padding: containerPadding } }
                 alignItems='center'
                 justifyContent='center'
             >
                 <Grid
                     container
+                    alignItems='center'
                     justifyContent="space-evenly"
-                    alignItems="center"
-                    flexDirection="row"
+                    spacing={ 10 }
                 >
                     <Grid
                         item container
-                        sx={ { width: '35%' } }
+                        className={ small && 'center' }
+                        xs={ 12 } sm={ 12 } md={ 12 } lg={ 6 } xl={ 6 }
                     >
-                        <img src='/our vision.svg' alt="Our Vision" style={ { width: '100%', height: 'auto' } } />
+                        <img src='/our vision.svg' alt="Our Vision" style={ { width: small ? '50%' : '100%', height: 'auto' } } />
                     </Grid>
                     <Grid
                         item
-                        sx={ { width: '35%' } }
+                        xs={ 12 } sm={ 12 } md={ 12 } lg={ 6 } xl={ 6 }
                     >
                         <Typography
-                            variant='h2'
+                            variant={ small ? 'h4' : 'h2' }
                             style={ {
                                 fontFamily: 'Poppins',
                                 fontWeight: 600,
@@ -439,9 +497,9 @@ const LandingPage = () => {
                             sx={ {
                                 fontFamily: 'Poppins',
                                 color: '#6E7387',
-                                maxWidth: '600px',
-                                lineHeight: '51px',
-                                fontSize: ' 30px'
+                                maxWidth: small ? '100%' : '600px',
+                                lineHeight: small ? '30px' : '51px',
+                                fontSize: small ? '20px' : '25px',
                             } }
                         >
                             To develop cutting edge ED-Tech products and career building courses to make a difference in the education sector.
@@ -453,7 +511,8 @@ const LandingPage = () => {
         <section className='section-100vh'>
             <Grid
                 container
-                sx={ { height: '100%', padding: '125px 150px 125px 150px' } }
+                className={ small && 'center' }
+                sx={ { height: '100%', padding: containerPadding } }
                 alignItems='center'
                 justifyContent='center'
             >
@@ -462,7 +521,7 @@ const LandingPage = () => {
                 >
                     <center>
                         <Typography
-                            variant='h2'
+                            variant={ small ? 'h4' : 'h2' }
                             style={ {
                                 fontFamily: 'Poppins',
                                 fontWeight: 600,
@@ -475,9 +534,9 @@ const LandingPage = () => {
                             sx={ {
                                 fontFamily: 'Poppins',
                                 color: '#6E7387',
-                                maxWidth: '1200px',
-                                lineHeight: '67px',
-                                fontSize: ' 40px'
+                                maxWidth: small ? '100%' : '1200px',
+                                lineHeight: small ? '50px' : '67px',
+                                fontSize: small ? '25px' : '40px'
                             } }
                         >
                             A futuristic product like ED-Phone and other services like the LMS platform, faculty Development Programs and Student workshops are the steps taken to realize our vision.
@@ -489,7 +548,8 @@ const LandingPage = () => {
         <section className='section-min-100vh' style={ { backgroundColor: '#F8F8F8' } }>
             <Grid
                 container
-                sx={ { height: '100%', padding: '125px 150px 125px 150px' } }
+                className={ small && 'center' }
+                sx={ { height: '100%', padding: containerPadding } }
                 alignItems='center'
                 justifyContent='center'
             >
@@ -502,7 +562,7 @@ const LandingPage = () => {
                     >
                         <center>
                             <Typography
-                                variant='h2'
+                                variant={ small ? 'h4' : 'h2' }
                                 style={ {
                                     fontFamily: 'Poppins',
                                     fontWeight: 600,
@@ -515,9 +575,9 @@ const LandingPage = () => {
                                 sx={ {
                                     fontFamily: 'Poppins',
                                     color: '#6E7387',
-                                    maxWidth: '1000px',
-                                    lineHeight: '51px',
-                                    fontSize: ' 25px'
+                                    maxWidth: small ? '100%' : '1000px',
+                                    lineHeight: small ? '30px' : '51px',
+                                    fontSize: small ? '20px' : '25px',
                                 } }
                             >
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nisi mi convallis tempor, pellentesque elit vitae aliquet vitae.
@@ -530,7 +590,7 @@ const LandingPage = () => {
                 <Grid item xs={ 12 }>&nbsp;</Grid>
                 <Grid
                     item container
-                    spacing={ 10 }
+                    spacing={ small ? 5 : 10 }
                 >
                     {
                         testimonials
@@ -553,6 +613,7 @@ const LandingPage = () => {
                                             rating,
                                             image,
                                             text,
+                                            small
                                         } }
                                     />
                                 </Grid>
@@ -567,25 +628,26 @@ const LandingPage = () => {
         <section className='section-100vh'>
             <Grid
                 container
-                sx={ { height: '100%', padding: '125px 150px 125px 150px' } }
+                className={ small && 'center' }
+                sx={ { height: '100%', padding: containerPadding } }
                 alignItems='center'
                 justifyContent='center'
             >
                 <Grid
                     container item
-                    spacing={ 10 }
+                    spacing={ small ? 5 : 10 }
                 >
                     <Grid
                         item
-                        xs={ 12 } sm={ 12 } md={ 6 } lg={ 6 } xl={ 6 }
+                        xs={ 12 } sm={ 12 } md={ 12 } lg={ 6 } xl={ 6 }
                     >
                         <Typography
-                            variant='h2'
+                            variant={ small ? 'h4' : 'h2' }
                             sx={ {
                                 fontFamily: 'Poppins',
                                 fontWeight: 600,
-                                fontSize: '64px',
-                                lineHeight: '90px',
+                                fontSize: small ? '40px' : '64px',
+                                lineHeight: small ? '60px' : '90px',
                             } }
                         >
                             Any questions?
@@ -597,8 +659,8 @@ const LandingPage = () => {
                             sx={ {
                                 fontFamily: 'Poppins',
                                 fontWeight: 500,
-                                fontSize: '28px',
-                                lineHeight: '52px',
+                                fontSize: small ? '20px' : '28px',
+                                lineHeight: small ? '30px' : '52px',
                                 color: '#6E7387',
                             } }
                         >
@@ -607,29 +669,15 @@ const LandingPage = () => {
                     </Grid>
                     <Grid
                         item
-                        xs={ 12 } sm={ 12 } md={ 6 } lg={ 6 } xl={ 6 }
+                        xs={ 12 } sm={ 12 } md={ 12 } lg={ 6 } xl={ 6 }
                     >
                         {
-                            [
-                                {
-                                    question: 'How does it work?',
-                                    answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit massa diam in fermentum morbi proin et vestibulum sodales.',
-                                },
-                                {
-                                    question: 'Are there any additional charges?',
-                                    answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit massa diam in fermentum morbi proin et vestibulum sodales.',
-                                },
-                                {
-                                    question: 'How can I purchase the product?',
-                                    answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit massa diam in fermentum morbi proin et vestibulum sodales.',
-                                },
-                                {
-                                    question: 'What features do you offer an what not?',
-                                    answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit massa diam in fermentum morbi proin et vestibulum sodales.',
-                                },
-                            ]
+                            questions
                                 .map(({ question, answer }, index, arr) => <Fragment key={ question }>
-                                    <Accordion>
+                                    <Accordion
+                                        expanded={ expanded === question }
+                                        onChange={ handleChange(question) }
+                                    >
                                         <AccordionSummary
                                             expandIcon={ <ExpandMoreIcon /> }
                                         >
@@ -637,8 +685,8 @@ const LandingPage = () => {
                                                 sx={ {
                                                     fontFamily: 'Poppins',
                                                     fontWeight: 500,
-                                                    fontSize: '32px',
-                                                    lineHeight: '45px',
+                                                    fontSize: small ? '20px' : '32px',
+                                                    lineHeight: small ? '30px' : '45px',
                                                 } }
                                             >
                                                 { question }
@@ -649,8 +697,8 @@ const LandingPage = () => {
                                                 sx={ {
                                                     fontFamily: 'Poppins',
                                                     fontWeight: 500,
-                                                    fontSize: '24px',
-                                                    lineHeight: '35px',
+                                                    fontSize: small ? '18px' : '24px',
+                                                    lineHeight: small ? '25px' : '35px',
                                                     color: '#6E7387',
                                                 } }
                                             >

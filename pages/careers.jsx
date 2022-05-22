@@ -9,47 +9,48 @@ import Typography from '@mui/material/Typography'
 import Dropzone from 'react-dropzone'
 import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined'
 import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined'
+import { useBreakpoint, usePadding, vh } from '../util/responsive'
 
-const HeroText = ({ children, small = false }) => {
+const HeroText = ({ children, small }) => {
     return <Typography
         variant='h1'
         sx={ {
-            fontWeight: 700,
-            fontSize: small ? '65px' : '90px',
-            lineHeight: small ? '80px' : '100px',
+            fontWeight: small ? 600 : 700,
+            fontSize: small ? '60px' : '90px',
+            lineHeight: small ? '70px' : '100px',
         } }
     >
         { children }
     </Typography>
 }
 
-const Input = ({ label = '' }) => {
+const Input = ({ label = '', small }) => {
     return <TextField
-        sx={ { marginBottom: '15px' } }
+        sx={ { marginBottom: small ? '8px' : '15px' } }
         fullWidth
         label={ label }
         variant='standard'
         inputProps={ {
             sx: {
-                fontSize: '20px',
+                fontSize: small ? '14px' : '20px',
             }
         } }
         InputLabelProps={ {
             sx: {
-                fontSize: '20px',
+                fontSize: small ? '14px' : '20px',
             }
         } }
     />
 }
 
-const ChipButton = ({ label = '', selected = false, onClick = () => { } }) => {
+const ChipButton = ({ label = '', selected = false, onClick = () => { }, small }) => {
     return <Chip
         label={ label }
         sx={ {
             fontWeight: 500,
             fontFamily: 'Inter',
-            fontSize: '25px',
-            lineHeight: '30px',
+            fontSize: small ? '18px' : '25px',
+            lineHeight: small ? '24px' : '30px',
             cursor: 'pointer',
             color: selected ? 'white' : 'black',
             backgroundColor: selected ? 'black' : 'white',
@@ -63,6 +64,8 @@ const ChipButton = ({ label = '', selected = false, onClick = () => { } }) => {
 
 const Careers = () => {
 
+    const small = useBreakpoint()
+    const containerPadding = usePadding('container')
     const [ jobType, setJobType ] = useState('Full Time')
     const [ files, setFiles ] = useState([])
 
@@ -70,35 +73,38 @@ const Careers = () => {
         <section className="section-100vh">
             <Grid
                 container
-                sx={ { height: '100%', padding: '125px 150px 125px 150px' } }
+                className={ small && 'center' }
+                sx={ { height: '100%', padding: containerPadding } }
                 alignItems='center'
-                justifyContent='space-between'
-                flexDirection='row'
+                justifyContent={ small ? 'space-evenly' : 'space-between' }
+                spacing={ small ? 5 : 10 }
             >
                 <Grid
                     item container
-                    sx={ { height: '100%', width: '50%' } }
+                    sx={ { height: small ? 'auto' : '100%' } }
+                    xs={ 12 } sm={ 12 } md={ 12 } lg={ 6 } xl={ 6 }
                     alignItems='center'
                 >
-                    <Grid item>
-                        <HeroText>
+                    <Grid item container className={ small && 'center' }>
+                        <HeroText small={ small }>
                             Lorem ipsum
                         </HeroText>
                         <br />
-                        <HeroText>
+                        <HeroText small={ small }>
                             dolor sit amet,
                         </HeroText>
                         <br />
-                        <HeroText>
+                        <HeroText small={ small }>
                             consectetur
                         </HeroText>
-                        <br /><br />
+                        <Grid item xs={ 12 }>&nbsp;</Grid>
+                        <Grid item xs={ 12 }>&nbsp;</Grid>
                         <Typography
                             sx={ {
                                 maxWidth: '80%',
                                 fontWeight: 500,
-                                fontSize: '25px',
-                                lineHeight: '45px',
+                                fontSize: small ? '18px' : '25px',
+                                lineHeight: small ? '30px' : '45px',
                                 color: '#6E7387'
                             } }
                         >
@@ -110,9 +116,17 @@ const Careers = () => {
                     item container
                     justifyContent='center'
                     alignItems='center'
-                    sx={ { height: '100%', width: '50%' } }
+                    sx={ { height: small ? 'auto' : '100%' } }
+                    xs={ 12 } sm={ 12 } md={ 12 } lg={ 6 } xl={ 6 }
                 >
-                    <img src='/careers-hero.svg' alt="Illustration" style={ { width: '100%', height: 'auto' } } />
+                    <img
+                        src='/careers-hero.svg'
+                        alt="Illustration"
+                        style={ small ?
+                            { width: 'auto', height: vh(45) } :
+                            { width: '100%', height: 'auto' }
+                        }
+                    />
                 </Grid>
             </Grid>
         </section>
@@ -121,9 +135,9 @@ const Careers = () => {
                 <Typography
                     sx={ {
                         fontFamily: 'Inter',
-                        fontSize: '65px',
+                        fontSize: small ? '40px' : '65px',
                         fontWeight: 600,
-                        lineHeight: '80px',
+                        lineHeight: small ? '55px' : '80px',
                         color: 'black',
                     } }
                 >
@@ -133,8 +147,8 @@ const Careers = () => {
                 <Typography
                     sx={ {
                         fontWeight: 400,
-                        fontSize: '30px',
-                        lineHeight: '50px',
+                        fontSize: small ? '20px' : '30px',
+                        lineHeight: small ? '35px' : '50px',
                         color: '#686F84',
                         letterSpacing: '-0.02em',
                     } }
@@ -144,7 +158,8 @@ const Careers = () => {
             </center>
             <Grid
                 container
-                sx={ { padding: '125px 250px 125px 250px' } }
+                className={ small && 'center' }
+                sx={ { padding: containerPadding } }
                 spacing={ 5 }
             >
                 <Grid
@@ -155,8 +170,8 @@ const Careers = () => {
                         sx={ {
                             fontFamily: 'Inter',
                             fontWeight: 600,
-                            fontSize: '50px',
-                            lineHeight: '60px',
+                            fontSize: small ? '30px' : '50px',
+                            lineHeight: small ? '40px' : '60px',
                             color: 'black',
                         } }
                     >
@@ -168,12 +183,14 @@ const Careers = () => {
                     xs={ 12 }
                 >
                     <ChipButton
+                        small={ small }
                         label='Full Time'
                         selected={ jobType === 'Full Time' }
                         onClick={ () => setJobType('Full Time') }
                     />
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <ChipButton
+                        small={ small }
                         label='Internship'
                         selected={ jobType === 'Internship' }
                         onClick={ () => setJobType('Internship') }
@@ -183,31 +200,31 @@ const Careers = () => {
                     item
                     xs={ 12 }
                 >
-                    <Input label='Name' />
+                    <Input small={ small } label='Name' />
                 </Grid>
                 <Grid
                     item
                     xs={ 12 } sm={ 6 }
                 >
-                    <Input label='Email' />
+                    <Input small={ small } label='Email' />
                 </Grid>
                 <Grid
                     item
                     xs={ 12 } sm={ 6 }
                 >
-                    <Input label='Email' />
+                    <Input small={ small } label='Email' />
                 </Grid>
                 <Grid
                     item
                     xs={ 12 }
                 >
-                    <Input label='Job Role' />
+                    <Input small={ small } label='Job Role' />
                 </Grid>
                 <Grid
                     item
                     xs={ 12 }
                 >
-                    <Input label='Skills' />
+                    <Input small={ small } label='Skills' />
                 </Grid>
                 <Grid
                     item
@@ -223,7 +240,7 @@ const Careers = () => {
                                 container
                                 sx={ {
                                     width: '100%',
-                                    height: 300,
+                                    height: small ? 200 : 300,
                                     backgroundColor: '#F3F3F3',
                                     borderRadius: '40px',
                                     cursor: 'pointer',
@@ -241,15 +258,15 @@ const Careers = () => {
                                     <Typography
                                         sx={ {
                                             fontWeight: 500,
-                                            fontSize: '35px',
-                                            lineHeight: '40px',
+                                            fontSize: small ? '25px' : '35px',
+                                            lineHeight: small ? '30px' : '40px',
                                             fontFamily: 'Inter',
                                         } }
                                     >
                                         Upload your resume
                                     </Typography>
                                     <br /><br />
-                                    <FileUploadOutlinedIcon sx={ { fontSize: '75px' } } />
+                                    <FileUploadOutlinedIcon sx={ { fontSize: small ? '50px' : '75px' } } />
                                 </Grid>
                             </Grid>
                         ) }
@@ -273,14 +290,14 @@ const Careers = () => {
                     xs={ 12 }
                 >
                     <Button
-                        size='large'
+                        size={ small ? 'medium' : 'large' }
                         sx={ {
                             backgroundColor: '#5080FF',
                             color: 'white',
-                            fontSize: '30px',
-                            fontWeight: 600,
-                            lineHeight: '50px',
-                            padding: '15px 50px 15px 50px',
+                            fontSize: small ? '25px' : '30px',
+                            fontWeight: small ? 500 : 600,
+                            lineHeight: small ? '35px' : '50px',
+                            padding: small ? '10px 30px 10px 30px' : '15px 50px 15px 50px',
                             borderRadius: '40px',
                             '&:hover': {
                                 color: '#5080FF',

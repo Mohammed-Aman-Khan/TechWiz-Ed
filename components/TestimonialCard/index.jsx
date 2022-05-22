@@ -11,13 +11,14 @@ const TestimonialCard = ({
     rating,
     image,
     text,
+    small,
 }) => {
     return <Paper
         elevation={ 0 }
         sx={ {
-            height: '500px',
+            height: 'auto',
             borderRadius: '20px',
-            padding: '50px',
+            padding: small ? '25px' : '50px',
         } }
     >
         <Typography
@@ -25,8 +26,8 @@ const TestimonialCard = ({
             sx={ {
                 fontFamily: 'Poppins',
                 fontWeight: 500,
-                fontSize: '25px',
-                lineHeight: '35px'
+                fontSize: small ? '18px' : '25px',
+                lineHeight: small ? '25px' : '35px'
             } }
         >
             { title }
@@ -46,8 +47,8 @@ const TestimonialCard = ({
                     alt={ user }
                     src={ image }
                     sx={ {
-                        height: '50px',
-                        width: '50px',
+                        height: small ? '30px' : '50px',
+                        width: small ? '30px' : '50px',
                     } }
                 />
             </Grid>
@@ -59,8 +60,8 @@ const TestimonialCard = ({
                         color: '#535A72',
                         fontFamily: 'Poppins',
                         fontWeight: 500,
-                        fontSize: '16px',
-                        lineHeight: '22px',
+                        fontSize: small ? '13px' : '16px',
+                        lineHeight: small ? '18px' : '22px',
                     } }
                 >
                     { user }
@@ -79,8 +80,8 @@ const TestimonialCard = ({
                         color: '#535A72',
                         fontFamily: 'Poppins',
                         fontWeight: 500,
-                        fontSize: '16px',
-                        lineHeight: '22px',
+                        fontSize: small ? '13px' : '16px',
+                        lineHeight: small ? '18px' : '22px',
                     } }
                 >
                     { rating }
@@ -95,8 +96,8 @@ const TestimonialCard = ({
                 color: '#7D849D',
                 fontFamily: 'Poppins',
                 fontWeight: 500,
-                fontSize: '16px',
-                lineHeight: '30px',
+                fontSize: small ? '13px' : '16px',
+                lineHeight: small ? '20px' : '30px',
             } }
         >
             { text }

@@ -1,13 +1,19 @@
 /* eslint-disable @next/next/no-img-element */
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
+import { usePadding, useBreakpoint, vh } from '../util/responsive'
 
 const About = () => {
+
+    const small = useBreakpoint()
+    const containerPadding = usePadding('container')
+
     return <>
         <section className='section-100vh'>
             <Grid
                 container
-                sx={ { height: '100%', padding: '125px 150px 125px 150px' } }
+                className={ small && 'center' }
+                sx={ { height: '100%', padding: containerPadding } }
                 alignItems='center'
                 justifyContent='center'
             >
@@ -18,9 +24,9 @@ const About = () => {
                         <Typography
                             sx={ {
                                 fontFamily: 'Inter',
-                                fontWeight: 700,
-                                fontSize: '70px',
-                                lineHeight: '100px',
+                                fontWeight: small ? 600 : 700,
+                                fontSize: small ? '40px' : '70px',
+                                lineHeight: small ? '70px' : '100px',
                             } }
                         >
                             Meet our team
@@ -30,8 +36,8 @@ const About = () => {
                             sx={ {
                                 fontFamily: 'Inter',
                                 fontWeight: 600,
-                                fontSize: '30px',
-                                lineHeight: '40px',
+                                fontSize: small ? '20px' : '30px',
+                                lineHeight: small ? '30px' : '40px',
                                 color: '#6E7387',
                             } }
                         >
@@ -46,7 +52,8 @@ const About = () => {
         <section className='section-100vh'>
             <Grid
                 container
-                sx={ { height: '100%', padding: '125px 150px 125px 150px' } }
+                className={ small && 'center' }
+                sx={ { height: '100%', padding: containerPadding } }
                 alignItems='center'
                 justifyContent='center'
             >
@@ -57,14 +64,14 @@ const About = () => {
                 >
                     <Grid
                         item
-                        xs={ 12 } sm={ 12 } md={ 6 } lg={ 6 } xl={ 6 }
+                        xs={ 12 } sm={ 12 } md={ 12 } lg={ 6 } xl={ 6 }
                     >
                         <Typography
                             sx={ {
                                 fontFamily: 'Inter',
-                                fontWeight: 700,
-                                fontSize: '60px',
-                                lineHeight: '70px',
+                                fontWeight: small ? 600 : 700,
+                                fontSize: small ? '35px' : '60px',
+                                lineHeight: small ? '45px' : '70px',
                             } }
                         >
                             What products are we into?
@@ -74,8 +81,8 @@ const About = () => {
                             sx={ {
                                 fontFamily: 'Poppins',
                                 fontWeight: 600,
-                                fontSize: '25px',
-                                lineHeight: '45px',
+                                fontSize: small ? '18px' : '25px',
+                                lineHeight: small ? '30px' : '45px',
                                 color: '#6E7387'
                             } }
                         >
@@ -84,9 +91,16 @@ const About = () => {
                     </Grid>
                     <Grid
                         item
-                        xs={ 12 } sm={ 12 } md={ 6 } lg={ 6 } xl={ 6 }
+                        xs={ 12 } sm={ 12 } md={ 12 } lg={ 6 } xl={ 6 }
                     >
-                        <img src='/what products.svg' alt='What products are we into' style={ { borderRadius: 20, width: '100%', height: 'auto' } } />
+                        <img
+                            src='/what products.svg'
+                            alt='What products are we into'
+                            style={ small ?
+                                { borderRadius: 20, width: 'auto', height: vh(45) } :
+                                { borderRadius: 20, width: '100%', height: 'auto' }
+                            }
+                        />
                     </Grid>
                 </Grid>
             </Grid>
@@ -94,7 +108,8 @@ const About = () => {
         <section className='section-100vh'>
             <Grid
                 container
-                sx={ { height: '100%', padding: '125px 150px 125px 150px' } }
+                className={ small && 'center' }
+                sx={ { height: '100%', padding: containerPadding } }
                 alignItems='center'
                 justifyContent='center'
             >
@@ -105,20 +120,27 @@ const About = () => {
                 >
                     <Grid
                         item
-                        xs={ 12 } sm={ 12 } md={ 6 } lg={ 6 } xl={ 6 }
+                        xs={ 12 } sm={ 12 } md={ 12 } lg={ 6 } xl={ 6 }
                     >
-                        <img src='/future scope.svg' alt='Future Scope' style={ { borderRadius: 20, width: '100%', height: 'auto' } } />
+                        <img
+                            src='/future scope.svg'
+                            alt='Future Scope'
+                            style={ small ?
+                                { borderRadius: 20, width: 'auto', height: vh(45) } :
+                                { borderRadius: 20, width: '100%', height: 'auto' }
+                            }
+                        />
                     </Grid>
                     <Grid
                         item
-                        xs={ 12 } sm={ 12 } md={ 6 } lg={ 6 } xl={ 6 }
+                        xs={ 12 } sm={ 12 } md={ 12 } lg={ 6 } xl={ 6 }
                     >
                         <Typography
                             sx={ {
                                 fontFamily: 'Inter',
-                                fontWeight: 700,
-                                fontSize: '60px',
-                                lineHeight: '70px',
+                                fontWeight: small ? 600 : 700,
+                                fontSize: small ? '35px' : '60px',
+                                lineHeight: small ? '45px' : '70px',
                             } }
                         >
                             Future Scope
@@ -128,8 +150,8 @@ const About = () => {
                             sx={ {
                                 fontFamily: 'Poppins',
                                 fontWeight: 600,
-                                fontSize: '25px',
-                                lineHeight: '45px',
+                                fontSize: small ? '18px' : '25px',
+                                lineHeight: small ? '30px' : '45px',
                                 color: '#6E7387'
                             } }
                         >
@@ -142,7 +164,8 @@ const About = () => {
         <section className='section-min-100vh'>
             <Grid
                 container
-                sx={ { height: '100%', padding: '125px 150px 125px 150px' } }
+                className={ small && 'center' }
+                sx={ { height: '100%', padding: containerPadding } }
                 alignItems='center'
                 justifyContent='center'
             >
@@ -153,9 +176,9 @@ const About = () => {
                         <Typography
                             sx={ {
                                 fontFamily: 'Inter',
-                                fontWeight: 700,
-                                fontSize: '75px',
-                                lineHeight: '150px',
+                                fontWeight: small ? 600 : 700,
+                                fontSize: small ? '40px' : '75px',
+                                lineHeight: small ? '100px' : '150px',
                             } }
                         >
                             Our Ethics
@@ -165,8 +188,8 @@ const About = () => {
                             sx={ {
                                 fontFamily: 'Inter',
                                 fontWeight: 500,
-                                fontSize: '25px',
-                                lineHeight: '30px',
+                                fontSize: small ? '18px' : '25px',
+                                lineHeight: small ? '25px' : '30px',
                                 color: '#6E7387',
                             } }
                         >
@@ -177,8 +200,8 @@ const About = () => {
                             sx={ {
                                 fontFamily: 'Inter',
                                 fontWeight: 600,
-                                fontSize: '50px',
-                                lineHeight: '75px',
+                                fontSize: small ? '30px' : '50px',
+                                lineHeight: small ? '60px' : '75px',
                                 color: '#535A72',
                             } }
                         >
@@ -193,7 +216,8 @@ const About = () => {
         <section className='section-100vh'>
             <Grid
                 container
-                sx={ { height: '100%', padding: '125px 150px 125px 150px' } }
+                className={ small && 'center' }
+                sx={ { height: '100%', padding: containerPadding } }
                 alignItems='center'
                 justifyContent='center'
             >
@@ -204,9 +228,9 @@ const About = () => {
                         <Typography
                             sx={ {
                                 fontFamily: 'Inter',
-                                fontWeight: 700,
-                                fontSize: '75px',
-                                lineHeight: '150px',
+                                fontWeight: small ? 600 : 700,
+                                fontSize: small ? '45px' : '75px',
+                                lineHeight: small ? '100px' : '150px',
                             } }
                         >
                             Our Mission
@@ -216,8 +240,8 @@ const About = () => {
                             sx={ {
                                 fontFamily: 'Inter',
                                 fontWeight: 400,
-                                fontSize: '30px',
-                                lineHeight: '60px',
+                                fontSize: small ? '20px' : '30px',
+                                lineHeight: small ? '40px' : '60px',
                                 color: '#535A72',
                             } }
                         >
@@ -230,7 +254,8 @@ const About = () => {
         <section className='section-100vh'>
             <Grid
                 container
-                sx={ { height: '100%', padding: '125px 150px 125px 150px' } }
+                className={ small && 'center' }
+                sx={ { height: '100%', padding: containerPadding } }
                 alignItems='center'
                 justifyContent='center'
             >
@@ -241,20 +266,26 @@ const About = () => {
                 >
                     <Grid
                         item
-                        xs={ 12 } sm={ 12 } md={ 6 } lg={ 6 } xl={ 6 }
+                        xs={ 12 } sm={ 12 } md={ 12 } lg={ 6 } xl={ 6 }
                     >
-                        <img src='/vision-about.svg' alt='Future Scope' style={ { borderRadius: 20, width: '100%', height: 'auto' } } />
+                        <img
+                            src='/vision-about.svg' alt='Future Scope'
+                            style={ small ?
+                                { borderRadius: 20, height: vh(45), width: 'auto' } :
+                                { borderRadius: 20, width: '100%', height: 'auto' }
+                            }
+                        />
                     </Grid>
                     <Grid
                         item
-                        xs={ 12 } sm={ 12 } md={ 6 } lg={ 6 } xl={ 6 }
+                        xs={ 12 } sm={ 12 } md={ 12 } lg={ 6 } xl={ 6 }
                     >
                         <Typography
                             sx={ {
                                 fontFamily: 'Inter',
-                                fontWeight: 700,
-                                fontSize: '60px',
-                                lineHeight: '70px',
+                                fontWeight: small ? 600 : 700,
+                                fontSize: small ? '35px' : '60px',
+                                lineHeight: small ? '45px' : '70px',
                             } }
                         >
                             Our Vision
@@ -264,8 +295,8 @@ const About = () => {
                             sx={ {
                                 fontFamily: 'Inter',
                                 fontWeight: 500,
-                                fontSize: '25px',
-                                lineHeight: '45px',
+                                fontSize: small ? '18px' : '25px',
+                                lineHeight: small ? '30px' : '45px',
                                 color: '#6E7387'
                             } }
                         >

@@ -3,6 +3,9 @@ import { ThemeProvider, createTheme } from '@mui/material/styles'
 import Paper from '@mui/material/Paper'
 import HeaderNav from '../components/HeaderNav'
 import Footer from '../components/Footer'
+import { vh, vw, initializeFrame } from '../util/responsive'
+import dynamic from 'next/dynamic'
+import { useEffect } from 'react'
 
 const ThemeWrapper = ({ children }) => {
     return <ThemeProvider
@@ -26,7 +29,7 @@ const BackgroundWrapper = ({ children }) => {
         square
         elevation={ 0 }
         style={ {
-            height: '100vh',
+            height: vh(100),
         } }
     >
         { children }
@@ -42,6 +45,9 @@ const HeaderFooterWrapper = ({ children }) => {
 }
 
 const MyApp = ({ Component, pageProps }) => {
+
+    useEffect(initializeFrame, [])
+
     return <ThemeWrapper>
         <BackgroundWrapper>
             <HeaderFooterWrapper>

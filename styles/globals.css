@@ -9,9 +9,14 @@ body {
 }
 
 .section-100vh {
-  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
 }
 
 .section-min-100vh {
-  min-height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100);
+}
+
+.center {
+  justify-content: center;
+  text-align: center;
 }
