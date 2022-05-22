@@ -2,40 +2,14 @@
 import Grid from '@mui/material/Grid'
 import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
+import { useEffect, useState } from 'react'
 import { useBreakpoint, usePadding } from '../../util/responsive'
-
-const projectsCategories = [
-    {
-        title: 'Embedded System & IoT',
-        image: '/iot.svg',
-        text: 'Embedded System is a microcontroller-based system of hardware and software designed to perform dedicated functions within a larger mechanical or electrical system.',
-    },
-    {
-        title: 'Machine Learning & Artificial Intelligence',
-        image: '/ai.svg',
-        text: 'Machine learning is broadly defined as the capability of a machine to imitate intelligent human behavior. ',
-    },
-    {
-        title: 'Ethical Hacking',
-        image: '/hacking.svg',
-        text: 'Ethical hacking is a process of detecting vulnerabilities in an application, system, or organization\'s infrastructure that an attacker can use to exploit an individual or organization.',
-    },
-    {
-        title: 'Robotics',
-        image: '/blockchain.svg',
-        text: 'Robotic is the design, construction, and use of machines  to perform tasks done traditionally by human beings.',
-    },
-    {
-        title: 'Blockchain',
-        image: '/robotics.svg',
-        text: 'Blockchain is a shared, immutable ledger that facilitates the process of recording transactions and tracking assets in a business network.',
-    },
-]
+import { getProjectCategories } from '../../util/cosmic'
 
 const CategoryCard = ({
     title,
     image,
-    text,
+    content,
     small,
 }) => {
     return <Paper
@@ -69,8 +43,8 @@ const CategoryCard = ({
                 fontSize: small ? '18px' : '25px',
                 lineHeight: small ? '30px' : '40px',
             } }
+            dangerouslySetInnerHTML={ { __html: content } }
         >
-            { text }
         </Typography>
     </Paper>
 }
@@ -79,6 +53,15 @@ const Projects = () => {
 
     const small = useBreakpoint()
     const containerPadding = usePadding('container')
+    const [ categories, setCategories ] = useState([])
+
+    useEffect(() => {
+        getProjectCategories()
+            .then(result => {
+                if (result && Array.isArray(result))
+                    setCategories(result)
+            })
+    }, [])
 
     return <>
         <section className='section-min-100vh'>
@@ -119,8 +102,8 @@ const Projects = () => {
                         spacing={ small ? 5 : 10 }
                     >
                         {
-                            projectsCategories
-                                .map(({ title, image, text }) =>
+                            categories
+                                .map(({ title, image, content }) =>
                                     <Grid
                                         item
                                         key={ title }
@@ -130,7 +113,7 @@ const Projects = () => {
                                             { ...{
                                                 title,
                                                 image,
-                                                text,
+                                                content,
                                                 small,
                                             } }
                                         />

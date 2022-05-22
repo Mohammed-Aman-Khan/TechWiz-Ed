@@ -6,6 +6,7 @@ import Footer from '../components/Footer'
 import { vh, vw, initializeFrame } from '../util/responsive'
 import dynamic from 'next/dynamic'
 import { useEffect } from 'react'
+import { Toaster } from 'react-hot-toast'
 
 const ThemeWrapper = ({ children }) => {
     return <ThemeProvider
@@ -54,6 +55,7 @@ const MyApp = ({ Component, pageProps }) => {
                 <Component { ...pageProps } />
             </HeaderFooterWrapper>
         </BackgroundWrapper>
+        <Toaster />
     </ThemeWrapper>
 }
 
