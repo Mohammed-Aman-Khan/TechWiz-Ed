@@ -189,10 +189,12 @@ const LandingPage = () => {
                 className={ small && 'center' }
                 sx={ { height: '100%', padding: containerPadding } }
                 alignItems='center'
-                justifyContent='space-between'
-                flexDirection='row'
+                justifyContent={ small ? 'space-evenly' : 'space-between' }
             >
-                <Grid item flexDirection='column'>
+                <Grid item flexDirection='column'
+                    xs={ 12 } sm={ 12 } md={ 12 } lg={ 6 } xl={ 6 }
+                    className={ small && 'center' }
+                >
                     <HeroText
                         small={ small }
                         style={ {
@@ -226,17 +228,33 @@ const LandingPage = () => {
                         &nbsp;out.
                     </HeroText>
                     <br />
-                    <Typography
-                        sx={ {
-                            fontFamily: 'Poppins',
-                            color: '#6E7387',
-                            maxWidth: small ? '90%' : '600px',
-                            lineHeight: small ? '35px' : '45px',
-                            fontSize: small ? '18px' : '24px'
-                        } }
-                    >
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus quis vulputate ipsum, massa ac suspendisse laoreet amet egestas. Felis iaculis.
-                    </Typography>
+                    {
+                        small ?
+                            <center>
+                                <Typography
+                                    sx={ {
+                                        fontFamily: 'Poppins',
+                                        color: '#6E7387',
+                                        maxWidth: '90%',
+                                        lineHeight: '30px',
+                                        fontSize: '15px'
+                                    } }
+                                >
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus quis vulputate ipsum, massa ac suspendisse laoreet amet egestas. Felis iaculis.
+                                </Typography>
+                            </center> :
+                            <Typography
+                                sx={ {
+                                    fontFamily: 'Poppins',
+                                    color: '#6E7387',
+                                    maxWidth: '600px',
+                                    lineHeight: '45px',
+                                    fontSize: '24px'
+                                } }
+                            >
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus quis vulputate ipsum, massa ac suspendisse laoreet amet egestas. Felis iaculis.
+                            </Typography>
+                    }
                     <br /><br />
                     <Button
                         size={ small ? 'medium' : 'large' }
@@ -270,7 +288,9 @@ const LandingPage = () => {
                         Learn More
                     </Button>
                 </Grid>
-                <Grid item>
+                <Grid item
+                    xs={ 12 } sm={ 12 } md={ 12 } lg={ 6 } xl={ 6 }
+                >
                     <img src='/big-screen-hero.svg' alt="Illustration" style={ { height: small ? vh(40) : vh(75) } } />
                 </Grid>
             </Grid>
@@ -307,7 +327,7 @@ const LandingPage = () => {
                         The flexibility and features of this product enables users to learn cutting-edge technology through
                         exciting and fun-filled experience.
                     </Typography>
-                    <img src="/floating ed.png" alt="Floating Ed" style={ { width: vh(90), maxWidth: vw(500), height: 'auto', marginTop: 150 } } />
+                    <img src="/floating ed.png" alt="Floating Ed" style={ { width: vw(90), maxWidth: 750, height: 'auto', marginTop: 150 } } />
                 </center>
             </Grid>
         </section>

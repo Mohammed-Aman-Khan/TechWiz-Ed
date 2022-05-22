@@ -4,6 +4,7 @@ import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import { useBreakpoint, usePadding, vh, vw } from '../util/responsive'
+import Emoji from 'a11y-react-emoji'
 
 const HeroText = ({ children, small }) => {
     return <Typography
@@ -67,7 +68,11 @@ const Contact = () => {
                         </HeroText>
                         <Grid item xs={ 12 }>&nbsp;</Grid>
                         <HeroText>
-                            India ❤️
+                            India&nbsp;
+                            <Emoji
+                                symbol='❤️'
+                                label='Love'
+                            />
                         </HeroText>
                         <Grid item xs={ 12 }>&nbsp;</Grid>
                         <Grid item xs={ 12 }>&nbsp;</Grid>
