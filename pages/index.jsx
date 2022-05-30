@@ -16,14 +16,14 @@ import { useBreakpoint, usePadding, vh, vw } from '../util/responsive'
 
 const HeroText = ({ children, style = {}, small }) => {
     return <Typography
-        variant={ small ? 'h3' : 'h1' }
-        sx={ {
+        variant={small ? 'h3' : 'h1'}
+        sx={{
             fontWeight: 700,
             display: 'inline-block',
             ...style,
-        } }
+        }}
     >
-        { children }
+        {children}
     </Typography>
 }
 
@@ -35,48 +35,48 @@ const WhatCanItDo = ({
     small,
 }) => {
     return <Paper
-        elevation={ 0 }
-        sx={ {
+        elevation={0}
+        sx={{
             padding: small ? '10px' : '20px',
-        } }
+        }}
     >
         <Chip
-            label={ number }
-            sx={ {
+            label={number}
+            sx={{
                 backgroundColor: color,
                 color: 'white',
-            } }
+            }}
         />
         <br />
-        { small ? <br /> : <></> }
+        {small ? <br /> : <></>}
         <Typography
-            sx={ {
+            sx={{
                 fontFamily: 'Poppins',
                 fontWeight: small ? 600 : 700,
                 fontSize: small ? '25px' : '40px',
                 lineHeigth: small ? '35px' : '60px',
-            } }
+            }}
         >
-            { title }
+            {title}
         </Typography>
         <br />
-        { small ? <br /> : <></> }
+        {small ? <br /> : <></>}
         <Typography
-            sx={ {
+            sx={{
                 fontFamily: 'Poppins',
                 fontWeight: 400,
                 fontSize: small ? '15px' : '20px',
                 lineHeigth: small ? '25px' : '34px',
                 color: '#6E7387',
-            } }
+            }}
         >
-            { text }
+            {text}
         </Typography>
     </Paper>
 }
 
 const Accordion = styled((props) => (
-    <MuiAccordion disableGutters elevation={ 0 } square { ...props } />
+    <MuiAccordion disableGutters elevation={0} square {...props} />
 ))(({ theme }) => ({
     padding: '25px',
     '&:not(:last-child)': {
@@ -186,44 +186,44 @@ const LandingPage = () => {
         <section className='section-100vh'>
             <Grid
                 container
-                className={ small && 'center' }
-                sx={ { height: '100%', padding: containerPadding } }
+                className={small && 'center'}
+                sx={{ height: '100%', padding: containerPadding }}
                 alignItems='center'
-                justifyContent={ small ? 'space-evenly' : 'space-between' }
+                justifyContent={small ? 'space-evenly' : 'space-between'}
             >
                 <Grid item flexDirection='column'
-                    xs={ 12 } sm={ 12 } md={ 12 } lg={ 6 } xl={ 6 }
-                    className={ small && 'center' }
+                    xs={12} sm={12} md={12} lg={6} xl={6}
+                    className={small && 'center'}
                 >
                     <HeroText
-                        small={ small }
-                        style={ {
+                        small={small}
+                        style={{
                             background: 'linear-gradient(96.89deg, #5A87FF 3.1%, #8C58FB 36.8%)',
                             WebkitBackgroundClip: 'text',
                             WebkitTextFillColor: 'transparent',
-                        } }
+                        }}
                     >
                         Go on,
                     </HeroText>
                     <br />
                     <HeroText
-                        small={ small }
+                        small={small}
                     >
                         Get your
                     </HeroText>
                     <br />
                     <HeroText
-                        small={ small }
-                        style={ {
+                        small={small}
+                        style={{
                             background: 'linear-gradient(96.89deg, #5A87FF 3.1%, #8C58FB 36.8%)',
                             WebkitBackgroundClip: 'text',
                             WebkitTextFillColor: 'transparent',
-                        } }
+                        }}
                     >
                         Techwiz
                     </HeroText>
                     <HeroText
-                        small={ small }
+                        small={small}
                     >
                         &nbsp;out.
                     </HeroText>
@@ -232,33 +232,33 @@ const LandingPage = () => {
                         small ?
                             <center>
                                 <Typography
-                                    sx={ {
+                                    sx={{
                                         fontFamily: 'Poppins',
                                         color: '#6E7387',
                                         maxWidth: '90%',
                                         lineHeight: '30px',
                                         fontSize: '15px'
-                                    } }
+                                    }}
                                 >
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus quis vulputate ipsum, massa ac suspendisse laoreet amet egestas. Felis iaculis.
                                 </Typography>
                             </center> :
                             <Typography
-                                sx={ {
+                                sx={{
                                     fontFamily: 'Poppins',
                                     color: '#6E7387',
                                     maxWidth: '600px',
                                     lineHeight: '45px',
                                     fontSize: '24px'
-                                } }
+                                }}
                             >
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus quis vulputate ipsum, massa ac suspendisse laoreet amet egestas. Felis iaculis.
                             </Typography>
                     }
                     <br /><br />
                     <Button
-                        size={ small ? 'medium' : 'large' }
-                        sx={ {
+                        size={small ? 'medium' : 'large'}
+                        sx={{
                             backgroundColor: '#5080FF',
                             color: 'white',
                             fontWeight: small ? 500 : 600,
@@ -269,113 +269,113 @@ const LandingPage = () => {
                             '&:hover': {
                                 color: '#5080FF',
                             }
-                        } }
+                        }}
                     >
                         Watch Demo
                     </Button>
                     &nbsp;&nbsp;&nbsp;
                     <Button
-                        size={ small ? 'medium' : 'large' }
+                        size={small ? 'medium' : 'large'}
                         variant="link"
-                        sx={ {
+                        sx={{
                             fontWeight: small ? 500 : 600,
                             fontSize: small ? '18px' : '25px',
                             height: small ? '40px' : '70px',
                             borderRadius: '40px',
                             padding: small ? '10px 15px 10px 15px' : '15px 30px 15px 30px',
-                        } }
+                        }}
                     >
                         Learn More
                     </Button>
                 </Grid>
                 <Grid item
-                    xs={ 12 } sm={ 12 } md={ 12 } lg={ 6 } xl={ 6 }
+                    xs={12} sm={12} md={12} lg={6} xl={6}
                 >
-                    <img src='/big-screen-hero.svg' alt="Illustration" style={ { height: small ? vh(40) : vh(75) } } />
+                    <img src='/big-screen-hero.svg' alt="Illustration" style={{ width: '100%', height: 'auto' }} />
                 </Grid>
             </Grid>
         </section>
         <section className='section-min-100vh'>
             <Grid
                 container
-                className={ small && 'center' }
-                sx={ { height: '100%', padding: containerPadding } }
+                className={small && 'center'}
+                sx={{ height: '100%', padding: containerPadding }}
                 alignItems='center'
                 justifyContent='center'
             >
                 <center>
                     <Typography
-                        variant={ small ? 'h4' : 'h2' }
-                        style={ {
+                        variant={small ? 'h4' : 'h2'}
+                        style={{
                             fontFamily: 'Poppins',
                             fontWeight: 600,
-                        } }
+                        }}
                     >
                         Has never been possible before
                     </Typography>
                     <br />
                     <Typography
-                        sx={ {
+                        sx={{
                             fontFamily: 'Poppins',
                             color: '#6E7387',
                             maxWidth: small ? '90%' : '1200px',
                             lineHeight: small ? '35px' : '51px',
                             fontSize: small ? '20px' : '30px'
-                        } }
+                        }}
                     >
                         The Ed-Phone is an innovative product with the sole purpose of revolutionizing technical education.
                         The flexibility and features of this product enables users to learn cutting-edge technology through
                         exciting and fun-filled experience.
                     </Typography>
-                    <img src="/floating ed.png" alt="Floating Ed" style={ { width: vw(90), maxWidth: 750, height: 'auto', marginTop: 150 } } />
+                    <img src="/floating ed.png" alt="Floating Ed" style={{ width: '90vw', maxWidth: 750, height: 'auto', marginTop: 150 }} />
                 </center>
             </Grid>
         </section>
         <section className='section-min-100vh'>
             <Grid
                 container
-                className={ small && 'center' }
-                sx={ { height: '100%', padding: containerPadding } }
-                alignItems={ small && 'center' }
+                className={small && 'center'}
+                sx={{ height: '100%', padding: containerPadding }}
+                alignItems={small && 'center'}
                 justifyContent='center'
             >
                 <center>
                     <Typography
-                        variant={ small ? 'h4' : 'h2' }
-                        style={ {
+                        variant={small ? 'h4' : 'h2'}
+                        style={{
                             fontFamily: 'Poppins',
                             fontWeight: 600,
-                        } }
+                        }}
                     >
                         Explore what can you do
                     </Typography>
                     <br />
                     <Typography
-                        sx={ {
+                        sx={{
                             fontFamily: 'Poppins',
                             color: '#6E7387',
                             maxWidth: small ? '90%' : '1200px',
                             lineHeight: small ? '35px' : '51px',
                             fontSize: small ? '20px' : '30px'
-                        } }
+                        }}
                     >
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam
                     </Typography>
                 </center>
-                <Grid item xs={ 12 }>&nbsp;</Grid>
-                <Grid item xs={ 12 }>&nbsp;</Grid>
-                <Grid item xs={ 12 }>&nbsp;</Grid>
-                <Grid item xs={ 12 }>&nbsp;</Grid>
-                <Grid item xs={ 12 }>&nbsp;</Grid>
-                <Grid item xs={ 12 }>&nbsp;</Grid>
+                <Grid item xs={12}>&nbsp;</Grid>
+                <Grid item xs={12}>&nbsp;</Grid>
+                <Grid item xs={12}>&nbsp;</Grid>
+                <Grid item xs={12}>&nbsp;</Grid>
+                <Grid item xs={12}>&nbsp;</Grid>
+                <Grid item xs={12}>&nbsp;</Grid>
                 <Grid
                     container
-                    spacing={ small ? 5 : 10 }
-                    className={ small && 'center' }
+                    spacing={small ? 5 : 10}
+                    className={small && 'center'}
                 >
                     <Grid
-                        container item={ !small }
-                        xs={ 12 } sm={ 12 } md={ 12 } lg={ 12 } xl={ 6 }
+                        container item={!small}
+                        xs={12} sm={12} md={12} lg={12} xl={6}
                     >
                         {
                             whatCanEdDo
@@ -387,41 +387,47 @@ const LandingPage = () => {
                                 }) =>
                                     <Grid
                                         item
-                                        xs={ 12 }
-                                        key={ title }
+                                        xs={12}
+                                        key={title}
                                     >
                                         <WhatCanItDo
-                                            { ...{
+                                            {...{
                                                 title,
                                                 text,
                                                 color,
                                                 number,
                                                 small,
-                                            } }
+                                            }}
                                         />
                                     </Grid>
                                 )
                         }
                     </Grid>
                     <Grid
-                        className={ small && 'center' }
-                        xs={ 12 } sm={ 12 } md={ 12 } lg={ 12 } xl={ 6 }
-                        sx={ {
-                            backgroundColor: '#BEBDFF',
-                            height: small ? vh(40) : '100%',
-                            borderRadius: '50px'
-                        } }
-                        justifyContent='center'
-                        alignItems='center'
+                        item
+                        xs={12} sm={12} md={12} lg={12} xl={6}
                     >
-                        <img
-                            src='https://images.ctfassets.net/tbduj203nkkk/2U2uWY7lYIsWMSyaw4MaOS/ce3790e1a12784d988bfc0dd0ca7a000/Night2.png'
-                            alt="The Ed Phone"
-                            style={ small ?
-                                { width: 'auto', height: '100%' } :
-                                { width: '75%', height: 'auto' }
-                            }
-                        />
+                        <div
+                            style={{
+                                height: '100%',
+                                width: '100%',
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                backgroundColor: '#BEBDFF',
+                                borderRadius: '50px',
+                                padding: '20px'
+                            }}
+                        >
+                            <img
+                                src='/lightphone.png'
+                                alt="The Ed Phone"
+                                style={small ?
+                                    { width: '100%', height: 'auto', maxWidth: 400 } :
+                                    { width: '50%', height: 'auto' }
+                                }
+                            />
+                        </div>
                     </Grid>
                 </Grid>
             </Grid>
@@ -429,38 +435,38 @@ const LandingPage = () => {
         <section className='section-100vh'>
             <Grid
                 container
-                className={ small && 'center' }
-                sx={ { height: '100%', padding: containerPadding } }
+                className={small && 'center'}
+                sx={{ height: '100%', padding: containerPadding }}
                 alignItems='center'
                 justifyContent='center'
             >
                 <center>
                     <Typography
-                        variant={ small ? 'h4' : 'h2' }
-                        style={ {
+                        variant={small ? 'h4' : 'h2'}
+                        style={{
                             fontFamily: 'Poppins',
                             fontWeight: 600,
-                        } }
+                        }}
                     >
                         What can ed do?
                     </Typography>
                     <br />
                     <Typography
-                        sx={ {
+                        sx={{
                             fontFamily: 'Poppins',
                             color: '#6E7387',
                             maxWidth: small ? '100%' : '1200px',
                             lineHeight: small ? '35px' : '51px',
                             fontSize: small ? '20px' : '30px'
-                        } }
+                        }}
                     >
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam
                     </Typography>
                     <br /><br />
-                    <img src='/What can ed do.svg' alt="What can ed do?" style={ { width: '70%', heihgt: 'auto' } } />
+                    <img src='/What can ed do.svg' alt="What can ed do?" style={{ width: '70%', heihgt: 'auto' }} />
                     <br /><br />
                     <Button
-                        sx={ {
+                        sx={{
                             backgroundColor: '#5080FF',
                             color: 'white',
                             fontSize: '20px',
@@ -471,7 +477,7 @@ const LandingPage = () => {
                             '&:hover': {
                                 color: '#5080FF',
                             },
-                        } }
+                        }}
                     >
                         Explore
                     </Button>
@@ -481,8 +487,8 @@ const LandingPage = () => {
         <section className='section-100vh'>
             <Grid
                 container
-                className={ small && 'center' }
-                sx={ { height: '100%', padding: containerPadding } }
+                className={small && 'center'}
+                sx={{ height: '100%', padding: containerPadding }}
                 alignItems='center'
                 justifyContent='center'
             >
@@ -490,37 +496,37 @@ const LandingPage = () => {
                     container
                     alignItems='center'
                     justifyContent="space-evenly"
-                    spacing={ 10 }
+                    spacing={10}
                 >
                     <Grid
                         item container
-                        className={ small && 'center' }
-                        xs={ 12 } sm={ 12 } md={ 12 } lg={ 6 } xl={ 6 }
+                        className={small && 'center'}
+                        xs={12} sm={12} md={12} lg={6} xl={6}
                     >
-                        <img src='/our vision.svg' alt="Our Vision" style={ { width: small ? '50%' : '100%', height: 'auto' } } />
+                        <img src='/our vision.svg' alt="Our Vision" style={{ width: small ? '50%' : '100%', height: 'auto' }} />
                     </Grid>
                     <Grid
                         item
-                        xs={ 12 } sm={ 12 } md={ 12 } lg={ 6 } xl={ 6 }
+                        xs={12} sm={12} md={12} lg={6} xl={6}
                     >
                         <Typography
-                            variant={ small ? 'h4' : 'h2' }
-                            style={ {
+                            variant={small ? 'h4' : 'h2'}
+                            style={{
                                 fontFamily: 'Poppins',
                                 fontWeight: 600,
-                            } }
+                            }}
                         >
                             Our Vision
                         </Typography>
                         <br />
                         <Typography
-                            sx={ {
+                            sx={{
                                 fontFamily: 'Poppins',
                                 color: '#6E7387',
                                 maxWidth: small ? '100%' : '600px',
                                 lineHeight: small ? '30px' : '51px',
                                 fontSize: small ? '20px' : '25px',
-                            } }
+                            }}
                         >
                             To develop cutting edge ED-Tech products and career building courses to make a difference in the education sector.
                         </Typography>
@@ -531,8 +537,8 @@ const LandingPage = () => {
         <section className='section-100vh'>
             <Grid
                 container
-                className={ small && 'center' }
-                sx={ { height: '100%', padding: containerPadding } }
+                className={small && 'center'}
+                sx={{ height: '100%', padding: containerPadding }}
                 alignItems='center'
                 justifyContent='center'
             >
@@ -541,23 +547,23 @@ const LandingPage = () => {
                 >
                     <center>
                         <Typography
-                            variant={ small ? 'h4' : 'h2' }
-                            style={ {
+                            variant={small ? 'h4' : 'h2'}
+                            style={{
                                 fontFamily: 'Poppins',
                                 fontWeight: 600,
-                            } }
+                            }}
                         >
                             Our Mission
                         </Typography>
                         <br /><br />
                         <Typography
-                            sx={ {
+                            sx={{
                                 fontFamily: 'Poppins',
                                 color: '#6E7387',
                                 maxWidth: small ? '100%' : '1200px',
                                 lineHeight: small ? '50px' : '67px',
                                 fontSize: small ? '25px' : '40px'
-                            } }
+                            }}
                         >
                             A futuristic product like ED-Phone and other services like the LMS platform, faculty Development Programs and Student workshops are the steps taken to realize our vision.
                         </Typography>
@@ -565,110 +571,117 @@ const LandingPage = () => {
                 </Grid>
             </Grid>
         </section>
-        <section className='section-min-100vh' style={ { backgroundColor: '#F8F8F8' } }>
-            <Grid
-                container
-                className={ small && 'center' }
-                sx={ { height: '100%', padding: containerPadding } }
-                alignItems='center'
-                justifyContent='center'
+        <section className='section-min-100vh'>
+            <Paper
+                square
+                elevation={24}
+                sx={{ boxShadow: 'none' }}
             >
                 <Grid
-                    container item
+                    container
+                    className={small && 'center'}
+                    sx={{ height: '100%', padding: containerPadding }}
+                    alignItems='center'
+                    justifyContent='center'
                 >
                     <Grid
-                        item
-                        xs={ 12 }
+                        container item
                     >
-                        <center>
-                            <Typography
-                                variant={ small ? 'h4' : 'h2' }
-                                style={ {
-                                    fontFamily: 'Poppins',
-                                    fontWeight: 600,
-                                } }
-                            >
-                                Testimonials
-                            </Typography>
-                            <br />
-                            <Typography
-                                sx={ {
-                                    fontFamily: 'Poppins',
-                                    color: '#6E7387',
-                                    maxWidth: small ? '100%' : '1000px',
-                                    lineHeight: small ? '30px' : '51px',
-                                    fontSize: small ? '20px' : '25px',
-                                } }
-                            >
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nisi mi convallis tempor, pellentesque elit vitae aliquet vitae.
-                            </Typography>
-                        </center>
-                    </Grid>
-                </Grid>
-                <Grid item xs={ 12 }>&nbsp;</Grid>
-                <Grid item xs={ 12 }>&nbsp;</Grid>
-                <Grid item xs={ 12 }>&nbsp;</Grid>
-                <Grid
-                    item container
-                    spacing={ small ? 5 : 10 }
-                >
-                    {
-                        testimonials
-                            .map(({
-                                title,
-                                user,
-                                rating,
-                                image,
-                                text,
-                            }) =>
-                                <Grid
-                                    key={ user }
-                                    item
-                                    xs={ 12 } sm={ 6 } md={ 6 } lg={ 4 } xl={ 4 }
+                        <Grid
+                            item
+                            xs={12}
+                        >
+                            <center>
+                                <br /><br />
+                                <Typography
+                                    variant={small ? 'h4' : 'h2'}
+                                    style={{
+                                        fontFamily: 'Poppins',
+                                        fontWeight: 600,
+                                    }}
                                 >
-                                    <TestimonialCard
-                                        { ...{
-                                            title,
-                                            user,
-                                            rating,
-                                            image,
-                                            text,
-                                            small
-                                        } }
-                                    />
-                                </Grid>
-                            )
-                    }
+                                    Testimonials
+                                </Typography>
+                                <br />
+                                <Typography
+                                    sx={{
+                                        fontFamily: 'Poppins',
+                                        color: '#6E7387',
+                                        maxWidth: small ? '100%' : '1000px',
+                                        lineHeight: small ? '30px' : '51px',
+                                        fontSize: small ? '20px' : '25px',
+                                    }}
+                                >
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nisi mi convallis tempor, pellentesque elit vitae aliquet vitae.
+                                </Typography>
+                            </center>
+                        </Grid>
+                    </Grid>
+                    <Grid item xs={12}>&nbsp;</Grid>
+                    <Grid item xs={12}>&nbsp;</Grid>
+                    <Grid item xs={12}>&nbsp;</Grid>
+                    <Grid
+                        item container
+                        spacing={small ? 5 : 10}
+                    >
+                        {
+                            testimonials
+                                .map(({
+                                    title,
+                                    user,
+                                    rating,
+                                    image,
+                                    text,
+                                }) =>
+                                    <Grid
+                                        key={user}
+                                        item
+                                        xs={12} sm={6} md={6} lg={4} xl={4}
+                                    >
+                                        <TestimonialCard
+                                            {...{
+                                                title,
+                                                user,
+                                                rating,
+                                                image,
+                                                text,
+                                                small
+                                            }}
+                                        />
+                                    </Grid>
+                                )
+                        }
+                    </Grid>
+                    <Grid item xs={12}>&nbsp;</Grid>
+                    <Grid item xs={12}>&nbsp;</Grid>
+                    <Grid item xs={12}>&nbsp;</Grid>
                 </Grid>
-                <Grid item xs={ 12 }>&nbsp;</Grid>
-                <Grid item xs={ 12 }>&nbsp;</Grid>
-                <Grid item xs={ 12 }>&nbsp;</Grid>
-            </Grid>
+            </Paper>
         </section>
         <section className='section-100vh'>
             <Grid
                 container
-                className={ small && 'center' }
-                sx={ { height: '100%', padding: containerPadding } }
+                className={small && 'center'}
+                sx={{ height: '100%', padding: containerPadding }}
                 alignItems='center'
                 justifyContent='center'
             >
                 <Grid
                     container item
-                    spacing={ small ? 5 : 10 }
+                    spacing={small ? 5 : 10}
                 >
                     <Grid
                         item
-                        xs={ 12 } sm={ 12 } md={ 12 } lg={ 6 } xl={ 6 }
+                        xs={12} sm={12} md={12} lg={6} xl={6}
                     >
                         <Typography
-                            variant={ small ? 'h4' : 'h2' }
-                            sx={ {
+                            variant={small ? 'h4' : 'h2'}
+                            sx={{
                                 fontFamily: 'Poppins',
                                 fontWeight: 600,
                                 fontSize: small ? '40px' : '64px',
                                 lineHeight: small ? '60px' : '90px',
-                            } }
+                            }}
                         >
                             Any questions?
                             <br />
@@ -676,57 +689,57 @@ const LandingPage = () => {
                         </Typography>
                         <br /><br /><br />
                         <Typography
-                            sx={ {
+                            sx={{
                                 fontFamily: 'Poppins',
                                 fontWeight: 500,
                                 fontSize: small ? '20px' : '28px',
                                 lineHeight: small ? '30px' : '52px',
                                 color: '#6E7387',
-                            } }
+                            }}
                         >
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ante nullam donec orci, pharetra ullamcorper tristique tempus sit.
                         </Typography>
                     </Grid>
                     <Grid
                         item
-                        xs={ 12 } sm={ 12 } md={ 12 } lg={ 6 } xl={ 6 }
+                        xs={12} sm={12} md={12} lg={6} xl={6}
                     >
                         {
                             questions
-                                .map(({ question, answer }, index, arr) => <Fragment key={ question }>
+                                .map(({ question, answer }, index, arr) => <Fragment key={question}>
                                     <Accordion
-                                        expanded={ expanded === question }
-                                        onChange={ handleChange(question) }
+                                        expanded={expanded === question}
+                                        onChange={handleChange(question)}
                                     >
                                         <AccordionSummary
-                                            expandIcon={ <ExpandMoreIcon /> }
+                                            expandIcon={<ExpandMoreIcon />}
                                         >
                                             <Typography
-                                                sx={ {
+                                                sx={{
                                                     fontFamily: 'Poppins',
                                                     fontWeight: 500,
                                                     fontSize: small ? '20px' : '32px',
                                                     lineHeight: small ? '30px' : '45px',
-                                                } }
+                                                }}
                                             >
-                                                { question }
+                                                {question}
                                             </Typography>
                                         </AccordionSummary>
                                         <AccordionDetails>
                                             <Typography
-                                                sx={ {
+                                                sx={{
                                                     fontFamily: 'Poppins',
                                                     fontWeight: 500,
                                                     fontSize: small ? '18px' : '24px',
                                                     lineHeight: small ? '25px' : '35px',
                                                     color: '#6E7387',
-                                                } }
+                                                }}
                                             >
-                                                { answer }
+                                                {answer}
                                             </Typography>
                                         </AccordionDetails>
                                     </Accordion>
-                                    { index === arr.length - 1 ? <></> : <Divider /> }
+                                    {index === arr.length - 1 ? <></> : <Divider />}
                                 </Fragment>
                                 )
                         }

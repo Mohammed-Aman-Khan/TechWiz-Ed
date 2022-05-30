@@ -3,56 +3,62 @@ import { ThemeProvider, createTheme } from '@mui/material/styles'
 import Paper from '@mui/material/Paper'
 import HeaderNav from '../components/HeaderNav'
 import Footer from '../components/Footer'
-import { vh, vw, initializeFrame } from '../util/responsive'
-import dynamic from 'next/dynamic'
-import { useEffect } from 'react'
 import { Toaster } from 'react-hot-toast'
+import { ThemeContext } from '../util/theme'
+import { useState, /* useEffect */ } from 'react'
 
 const ThemeWrapper = ({ children }) => {
+
+    const [ theme, setTheme ] = useState('light')
+
+    // useEffect(() => localStorage.themeMode = theme, [ theme ])
+
     return <ThemeProvider
-        theme={
-            createTheme({
-                palette: {
-                    mode: 'light',
-                },
-                typography: {
-                    fontFamily: [ 'Poppins', 'Inter', 'sans-serif' ].join(', '),
-                },
-            })
-        }
+        theme={createTheme({
+            palette: {
+                mode: theme,
+            },
+            typography: {
+                fontFamily: [ 'Poppins', 'Inter', 'sans-serif' ].join(', '),
+            },
+        })}
     >
-        { children }
+        <ThemeContext.Provider
+            value={{
+                toggleTheme: () => setTheme(prev => prev === 'light' ? 'dark' : 'light')
+            }}
+        >
+            {children}
+        </ThemeContext.Provider>
     </ThemeProvider>
 }
 
 const BackgroundWrapper = ({ children }) => {
     return <Paper
         square
-        elevation={ 0 }
-        style={ {
-            height: vh(100),
-        } }
+        elevation={0}
+        style={{
+            height: 'auto',
+            width: '100%',
+        }}
     >
-        { children }
+        {children}
     </Paper>
 }
 
 const HeaderFooterWrapper = ({ children }) => {
     return <>
         <HeaderNav />
-        { children }
+        {children}
         <Footer />
     </>
 }
 
 const MyApp = ({ Component, pageProps }) => {
-
-    useEffect(initializeFrame, [])
-
     return <ThemeWrapper>
         <BackgroundWrapper>
             <HeaderFooterWrapper>
-                <Component { ...pageProps } />
+                <Component {...pageProps} />
             </HeaderFooterWrapper>
         </BackgroundWrapper>
         <Toaster />
