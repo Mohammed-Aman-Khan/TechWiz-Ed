@@ -12,7 +12,8 @@ import { styled } from '@mui/material/styles'
 import { Fragment, useState } from 'react'
 import Divider from '@mui/material/Divider'
 import Chip from '@mui/material/Chip'
-import { useBreakpoint, usePadding, vh, vw } from '../util/responsive'
+import { useBreakpoint, usePadding } from '../util/responsive'
+import Link from 'next/link'
 
 const HeroText = ({ children, style = {}, small }) => {
     return <Typography
@@ -183,7 +184,7 @@ const LandingPage = () => {
     }
 
     return <>
-        <section className='section-100vh'>
+        <section id='landing' className='section-100vh'>
             <Grid
                 container
                 className={small && 'center'}
@@ -258,6 +259,8 @@ const LandingPage = () => {
                     <br /><br />
                     <Button
                         size={small ? 'medium' : 'large'}
+                        variant="link"
+                        href='#has-never-been-possible'
                         sx={{
                             backgroundColor: '#5080FF',
                             color: 'white',
@@ -277,6 +280,7 @@ const LandingPage = () => {
                     <Button
                         size={small ? 'medium' : 'large'}
                         variant="link"
+                        href='#what-you-can-do'
                         sx={{
                             fontWeight: small ? 500 : 600,
                             fontSize: small ? '18px' : '25px',
@@ -295,7 +299,7 @@ const LandingPage = () => {
                 </Grid>
             </Grid>
         </section>
-        <section className='section-min-100vh'>
+        <section id='has-never-been-possible' className='section-min-100vh'>
             <Grid
                 container
                 className={small && 'center'}
@@ -331,10 +335,9 @@ const LandingPage = () => {
                 </center>
             </Grid>
         </section>
-        <section className='section-min-100vh'>
+        <section id='what-you-can-do' className='section-min-100vh'>
             <Grid
                 container
-                // className={small && 'center'}
                 sx={{ height: '100%', padding: containerPadding }}
                 alignItems={small && 'center'}
                 justifyContent='center'
@@ -369,13 +372,12 @@ const LandingPage = () => {
                 <Grid item xs={12}>&nbsp;</Grid>
                 <Grid item xs={12}>&nbsp;</Grid>
                 <Grid
-                    item
+                    container item
                     spacing={small ? 5 : 10}
-                // className={small && 'center'}
                 >
                     <Grid
-                        container item={!small}
-                        xs={12} sm={12} md={12} lg={12} xl={6}
+                        item
+                        xs={12} sm={12} md={6} lg={6} xl={6}
                     >
                         {
                             whatCanEdDo
@@ -405,7 +407,7 @@ const LandingPage = () => {
                     </Grid>
                     <Grid
                         item
-                        xs={12} sm={12} md={12} lg={12} xl={6}
+                        xs={12} sm={12} md={6} lg={6} xl={6}
                     >
                         <div
                             style={{
@@ -432,7 +434,7 @@ const LandingPage = () => {
                 </Grid>
             </Grid>
         </section>
-        <section className='section-100vh'>
+        <section id='what-can-ed-do' className='section-100vh'>
             <Grid
                 container
                 className={small && 'center'}
@@ -463,28 +465,36 @@ const LandingPage = () => {
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam
                     </Typography>
                     <br /><br />
-                    <img src='/What can ed do.svg' alt="What can ed do?" style={{ width: small ? '100%' : '70%', heihgt: 'auto' }} />
+                    <video controls style={{ width: small ? '100%' : '80%', height: 'auto', outline: 'none', borderRadius: 10 }} autoPlay>
+                        <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type='video/mp4' />
+                    </video>
                     <br /><br />
-                    <Button
-                        sx={{
-                            backgroundColor: '#5080FF',
-                            color: 'white',
-                            fontSize: '20px',
-                            fontWeight: 600,
-                            lineHeight: '50px',
-                            padding: '5px 50px 5px 50px',
-                            borderRadius: '40px',
-                            '&:hover': {
-                                color: '#5080FF',
-                            },
-                        }}
+                    <Link
+                        href='/projects'
+                        passHref
                     >
-                        Explore
-                    </Button>
+                        <Button
+                            sx={{
+                                backgroundColor: '#5080FF',
+                                color: 'white',
+                                fontSize: '20px',
+                                fontWeight: 600,
+                                lineHeight: '50px',
+                                padding: '5px 50px 5px 50px',
+                                borderRadius: '40px',
+                                '&:hover': {
+                                    color: '#5080FF',
+                                },
+                            }}
+                            variant="link"
+                        >
+                            Explore
+                        </Button>
+                    </Link>
                 </center>
             </Grid>
         </section>
-        <section className='section-100vh'>
+        <section id='vision' className='section-100vh'>
             <Grid
                 container
                 className={small && 'center'}
@@ -503,7 +513,7 @@ const LandingPage = () => {
                         className={small && 'center'}
                         xs={12} sm={12} md={12} lg={6} xl={6}
                     >
-                        <img src='/our vision.svg' alt="Our Vision" style={{ width: small ? '50%' : '100%', height: 'auto' }} />
+                        <img src='/our vision.svg' alt="Our Vision" style={{ width: '100%', height: 'auto' }} />
                     </Grid>
                     <Grid
                         item
@@ -535,7 +545,7 @@ const LandingPage = () => {
                 </Grid>
             </Grid>
         </section>
-        <section className='section-100vh'>
+        <section id='vision' className='section-100vh'>
             <Grid
                 container
                 className={small && 'center'}
@@ -573,7 +583,7 @@ const LandingPage = () => {
                 </Grid>
             </Grid>
         </section>
-        <section className='section-min-100vh'>
+        <section id='testimonials' className='section-min-100vh'>
             <Paper
                 square
                 elevation={24}
@@ -660,7 +670,7 @@ const LandingPage = () => {
                 </Grid>
             </Paper>
         </section>
-        <section className='section-100vh'>
+        <section id='any-questions' className='section-100vh'>
             <Grid
                 container
                 sx={{ height: '100%', padding: containerPadding }}

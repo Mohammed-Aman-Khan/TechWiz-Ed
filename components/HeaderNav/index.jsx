@@ -103,14 +103,20 @@ const HeaderNav = () => {
                             &nbsp;
                         </> : <></>
                     }
-                    <Typography
-                        variant='h4'
-                        sx={{
-                            fontWeight: 700,
-                        }}
+                    <Link
+                        href='/'
+                        passHref
                     >
-                        LOGO
-                    </Typography>
+                        <Typography
+                            variant='h4'
+                            sx={{
+                                fontWeight: 700,
+                                cursor: 'pointer'
+                            }}
+                        >
+                            LOGO
+                        </Typography>
+                    </Link>
                 </div>
             </Grid>
             {
@@ -129,8 +135,13 @@ const HeaderNav = () => {
                         >
                             {
                                 Links.map(({ link, path }) => {
-                                    const currentPath = router.pathname
-                                    const current = currentPath.replace('/', '') === path.replace('/', '')
+                                    let currentPath = router.pathname
+                                    let current
+
+                                    if (path === '/projects' && currentPath.startsWith('/projects'))
+                                        current = true
+                                    else
+                                        current = currentPath.replace('/', '') === path.replace('/', '')
 
                                     return <Link key={path} href={path} passHref>
                                         <Grid item>
@@ -179,10 +190,11 @@ const HeaderNav = () => {
                         position: 'fixed',
                         right: small ? '5px' : '10px',
                         bottom: small ? '5px' : '10px',
-                        backgroundColor: 'black',
-                        color: 'white',
+                        backgroundColor: theme.palette.mode === 'light' ? 'black' : 'white',
+                        color: theme.palette.mode === 'light' ? 'white' : 'black',
                         '&:hover': {
-                            color: 'black',
+                            backgroundColor: theme.palette.mode === 'dark' ? 'black' : 'white',
+                            color: theme.palette.mode === 'dark' ? 'white' : 'black',
                         }
                     }}
                     onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}

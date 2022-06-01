@@ -34,24 +34,24 @@ const Links = [
 
 const Projects = [
     {
-        project: 'Embedded Systems & IoT',
-        path: '/projects/embedded-systems-and-iot'
-    },
-    {
         project: 'Machine Learning & Artificial Intelligence',
         path: '/projects/machine-learning-and-artificial-intelligence'
+    },
+    {
+        project: 'Embedded Systems & IoT',
+        path: '/projects/embedded-systems-and-iot'
     },
     {
         project: 'Ethical Hacking',
         path: '/projects/ethical-hacking'
     },
     {
-        project: 'Robotics',
-        path: '/projects/robotics'
-    },
-    {
         project: 'Blockchain',
         path: '/projects/Blockchain'
+    },
+    {
+        project: 'Robotics',
+        path: '/projects/robotics'
     },
 ]
 
@@ -84,9 +84,14 @@ const Footer = () => {
                         xs={12}
                         sx={{ marginBottom: '30px' }}
                     >
-                        <Typography variant="h3">
-                            Logo
-                        </Typography>
+                        <Link
+                            href='/'
+                            passHref
+                        >
+                            <Typography variant="h3" sx={{ cursor: 'pointer' }}>
+                                Logo
+                            </Typography>
+                        </Link>
                     </Grid>
                     <Grid
                         item
