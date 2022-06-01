@@ -44,7 +44,7 @@ const About = () => {
                             Come visit our friendly team
                         </Typography>
                         <br /><br /><br />
-                        <img src='/meet our team.svg' alt="Meet our team" style={{ width: small ? '100%' : '80%', height: 'auto' }} />
+                        <img src='/meet our team.svg' alt="Meet our team" style={{ width: small ? '100%' : '85%', height: 'auto' }} />
                     </center>
                 </Grid>
             </Grid>
@@ -189,7 +189,7 @@ const About = () => {
                         >
                             Futuristic product like Ed-phone
                         </Typography>
-                        <br /><br /><br />
+                        <br /><br />
                         <Typography
                             sx={{
                                 fontFamily: 'Inter',
@@ -229,7 +229,7 @@ const About = () => {
                         >
                             Our Mission
                         </Typography>
-                        <br /><br /><br /><br /><br />
+                        <br /><br />
                         <Typography
                             sx={{
                                 fontFamily: 'Inter',

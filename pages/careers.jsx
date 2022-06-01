@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState } from 'react'
 import Grid from '@mui/material/Grid'
-import Chip from '@mui/material/Chip'
 import Button from '@mui/material/Button'
 import IconButton from '@mui/material/IconButton'
 import TextField from '@mui/material/TextField'
@@ -25,12 +24,14 @@ const HeroText = ({ children, small }) => {
     </Typography>
 }
 
-const Input = ({ label = '', small }) => {
+const Input = ({ label = '', small, type, ...props }) => {
     return <TextField
         sx={{ marginBottom: small ? '8px' : '15px' }}
         fullWidth
         label={label}
         variant='standard'
+        type={type}
+        {...props}
         inputProps={{
             sx: {
                 fontSize: small ? '14px' : '20px',
@@ -45,22 +46,26 @@ const Input = ({ label = '', small }) => {
 }
 
 const ChipButton = ({ label = '', selected = false, onClick = () => { }, small }) => {
-    return <Chip
-        label={label}
+    return <Button
         sx={{
             fontWeight: 500,
             fontFamily: 'Inter',
             fontSize: small ? '18px' : '25px',
             lineHeight: small ? '24px' : '30px',
             cursor: 'pointer',
-            color: selected ? 'white' : 'black',
-            backgroundColor: selected ? 'black' : 'white',
-            border: selected ? 'none' : '2px solid lightgrey',
-            padding: '20px',
+            // color: selected ? 'white' : 'black',
+            // backgroundColor: selected ? 'black' : 'white',
+            // border: selected ? 'none' : '2px solid lightgrey',
+            padding: '10px 20px 10px 20px',
             borderRadius: '50px',
         }}
+        color={selected ? 'primary' : 'inherit'}
+        disableElevation
+        variant={selected ? 'contained' : 'standard'}
         onClick={onClick}
-    />
+    >
+        {label}
+    </Button>
 }
 
 const Careers = () => {
@@ -197,31 +202,31 @@ const Careers = () => {
                     item
                     xs={12}
                 >
-                    <Input small={small} label='Name' />
+                    <Input small={small} label='Name' type='text' />
                 </Grid>
                 <Grid
                     item
                     xs={12} sm={6}
                 >
-                    <Input small={small} label='Email' />
+                    <Input small={small} label='Email' type='email' />
                 </Grid>
                 <Grid
                     item
                     xs={12} sm={6}
                 >
-                    <Input small={small} label='Email' />
+                    <Input small={small} label='Phone' type='tel' />
                 </Grid>
                 <Grid
                     item
                     xs={12}
                 >
-                    <Input small={small} label='Job Role' />
+                    <Input small={small} label='Job Role' type='text' />
                 </Grid>
                 <Grid
                     item
                     xs={12}
                 >
-                    <Input small={small} label='Skills' />
+                    <Input small={small} label='Skills' type='text' />
                 </Grid>
                 <Grid
                     item

@@ -111,7 +111,7 @@ const Projects = () => {
                                     <Grid
                                         item
                                         key={title}
-                                        xs={12} sm={6} md={6} lg={6} xl={4}
+                                        xs={12} sm={12} md={6} lg={6} xl={6}
                                     >
                                         <CategoryCard
                                             {...{
@@ -123,6 +123,32 @@ const Projects = () => {
                                         />
                                     </Grid>
                                 )
+                        }
+                        {
+                            categories % 2 !== 0 ?
+                                <Grid
+                                    item
+                                    xs={12} sm={12} md={6} lg={6} xl={6}
+                                >
+                                    <Paper
+                                        elevation={0}
+                                        sx={{
+                                            padding: small ? '20px' : '30px',
+                                            borderRadius: '30px',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            height: '100%'
+                                        }}
+                                    >
+                                        <Typography
+                                            variant={small ? 'h6' : 'h4'}
+                                        >
+                                            More Coming Soon
+                                        </Typography>
+                                    </Paper>
+                                </Grid>
+                                : <></>
                         }
                     </Grid>
                 </Grid>

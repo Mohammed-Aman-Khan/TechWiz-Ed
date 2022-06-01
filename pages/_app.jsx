@@ -20,6 +20,11 @@ const ThemeWrapper = ({ children }) => {
     return <ThemeProvider
         theme={createTheme({
             palette: {
+                primary: {
+                    light: '#8cafff',
+                    main: '#5080ff',
+                    dark: '#0054cb',
+                },
                 mode,
                 ...(
                     mode === 'dark' ?
