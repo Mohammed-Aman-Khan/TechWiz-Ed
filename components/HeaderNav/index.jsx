@@ -89,6 +89,7 @@ const HeaderNav = () => {
                     style={{
                         display: 'flex',
                         alignItems: 'center',
+                        justifyContent: 'center',
                     }}
                 >
                     {
@@ -102,13 +103,18 @@ const HeaderNav = () => {
                             &nbsp;
                         </> : <></>
                     }
-                    <Typography variant='h4' sx={{ fontWeight: 700 }}>
+                    <Typography
+                        variant='h4'
+                        sx={{
+                            fontWeight: 700,
+                        }}
+                    >
                         LOGO
                     </Typography>
                 </div>
             </Grid>
             {
-                !small ?
+                !small ? <>
                     <Grid
                         item
                         justifyContent='center'
@@ -147,35 +153,22 @@ const HeaderNav = () => {
                             }
                         </Grid>
                     </Grid>
+                    <Grid item>
+                        <IconButton
+                            onClick={() => toggleTheme()}
+                            sx={{
+                                borderRadius: '10px',
+                                border: theme.palette.mode === 'light' ? '2px solid darkgrey' : '1px solid lightgrey',
+                            }}
+                        >
+                            {
+                                theme.palette.mode === 'light' ? <DarkModeOutlinedIcon /> : <LightModeOutlinedIcon />
+                            }
+                        </IconButton>
+                    </Grid>
+                </>
                     : <></>
             }
-            <Grid item>
-                {/* <Button
-                    sx={{
-                        backgroundColor: 'black',
-                        color: 'white',
-                        borderRadius: '25px',
-                        padding: small ? '5px 10px 5px 10px' : '10px 20px 10px 20px',
-                        '&:hover': {
-                            color: 'black',
-                        }
-                    }}
-                    onClick={() => toggleTheme()}
-                >
-                    Start Free Trial
-                </Button> */}
-                <IconButton
-                    onClick={() => toggleTheme()}
-                    sx={{
-                        borderRadius: '10px',
-                        border: theme.palette.mode === 'light' ? '2px solid darkgrey' : '1px solid lightgrey',
-                    }}
-                >
-                    {
-                        theme.palette.mode === 'light' ? <DarkModeOutlinedIcon /> : <LightModeOutlinedIcon />
-                    }
-                </IconButton>
-            </Grid>
         </Grid>
         {
             scrollY > 100 ?
@@ -213,9 +206,24 @@ const HeaderNav = () => {
                     <ListItem>
                         <ListItemText
                             primary={
-                                <IconButton>
-                                    <CloseIcon />
-                                </IconButton>
+                                <>
+                                    <IconButton
+                                        onClick={() => toggleTheme()}
+                                        sx={{
+                                            borderRadius: '10px',
+                                            border: theme.palette.mode === 'light' ? '2px solid darkgrey' : '1px solid lightgrey',
+                                        }}
+                                    >
+                                        {
+                                            theme.palette.mode === 'light' ? <DarkModeOutlinedIcon /> : <LightModeOutlinedIcon />
+                                        }
+                                    </IconButton>
+                                    <IconButton
+                                        sx={{ float: 'right' }}
+                                    >
+                                        <CloseIcon />
+                                    </IconButton>
+                                </>
                             }
                         />
                     </ListItem>

@@ -334,7 +334,7 @@ const LandingPage = () => {
         <section className='section-min-100vh'>
             <Grid
                 container
-                className={small && 'center'}
+                // className={small && 'center'}
                 sx={{ height: '100%', padding: containerPadding }}
                 alignItems={small && 'center'}
                 justifyContent='center'
@@ -369,9 +369,9 @@ const LandingPage = () => {
                 <Grid item xs={12}>&nbsp;</Grid>
                 <Grid item xs={12}>&nbsp;</Grid>
                 <Grid
-                    container
+                    item
                     spacing={small ? 5 : 10}
-                    className={small && 'center'}
+                // className={small && 'center'}
                 >
                     <Grid
                         container item={!small}
@@ -463,7 +463,7 @@ const LandingPage = () => {
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam
                     </Typography>
                     <br /><br />
-                    <img src='/What can ed do.svg' alt="What can ed do?" style={{ width: '70%', heihgt: 'auto' }} />
+                    <img src='/What can ed do.svg' alt="What can ed do?" style={{ width: small ? '100%' : '70%', heihgt: 'auto' }} />
                     <br /><br />
                     <Button
                         sx={{
@@ -527,6 +527,7 @@ const LandingPage = () => {
                                 lineHeight: small ? '30px' : '51px',
                                 fontSize: small ? '20px' : '25px',
                             }}
+                        // className='text-justify'
                         >
                             To develop cutting edge ED-Tech products and career building courses to make a difference in the education sector.
                         </Typography>
@@ -564,6 +565,7 @@ const LandingPage = () => {
                                 lineHeight: small ? '50px' : '67px',
                                 fontSize: small ? '25px' : '40px'
                             }}
+                        // className='text-justify'
                         >
                             A futuristic product like ED-Phone and other services like the LMS platform, faculty Development Programs and Student workshops are the steps taken to realize our vision.
                         </Typography>
@@ -579,7 +581,6 @@ const LandingPage = () => {
             >
                 <Grid
                     container
-                    className={small && 'center'}
                     sx={{ height: '100%', padding: containerPadding }}
                     alignItems='center'
                     justifyContent='center'
@@ -590,6 +591,7 @@ const LandingPage = () => {
                         <Grid
                             item
                             xs={12}
+                            className={small && 'center'}
                         >
                             <center>
                                 <br /><br />
@@ -661,7 +663,6 @@ const LandingPage = () => {
         <section className='section-100vh'>
             <Grid
                 container
-                className={small && 'center'}
                 sx={{ height: '100%', padding: containerPadding }}
                 alignItems='center'
                 justifyContent='center'
@@ -672,6 +673,7 @@ const LandingPage = () => {
                 >
                     <Grid
                         item
+                        className={small && 'center'}
                         xs={12} sm={12} md={12} lg={6} xl={6}
                     >
                         <Typography

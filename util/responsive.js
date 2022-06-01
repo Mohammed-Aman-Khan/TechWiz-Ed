@@ -12,7 +12,7 @@ export const usePadding = (component = 'container') => {
     const small = useBreakpoint()
 
     if (component === 'container')
-        return small ? '25px 50px 25px 50px' : '0px 150px 0px 150px'
+        return small ? '25px' : '0px 150px 0px 150px'
     else
         return small ? '10px 20px 10px 20px' : '30px 150px 30px 150px'
 }

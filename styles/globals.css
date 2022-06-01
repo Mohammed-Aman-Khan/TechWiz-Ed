@@ -24,3 +24,8 @@ body {
   justify-content: center;
   text-align: center;
 }
+
+.text-justify {
+  text-align: justify;
+  text-justify: auto;
+}

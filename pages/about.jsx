@@ -44,7 +44,7 @@ const About = () => {
                             Come visit our friendly team
                         </Typography>
                         <br /><br /><br />
-                        <img src='/meet our team.svg' alt="Meet our team" style={{ width: '80%', height: 'auto' }} />
+                        <img src='/meet our team.svg' alt="Meet our team" style={{ width: small ? '100%' : '80%', height: 'auto' }} />
                     </center>
                 </Grid>
             </Grid>

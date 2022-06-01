@@ -5,18 +5,33 @@ import HeaderNav from '../components/HeaderNav'
 import Footer from '../components/Footer'
 import { Toaster } from 'react-hot-toast'
 import { ThemeContext } from '../util/theme'
-import { useState, /* useEffect */ } from 'react'
+import { useState, useEffect } from 'react'
 
 const ThemeWrapper = ({ children }) => {
 
-    const [ theme, setTheme ] = useState('light')
+    const [ mode, setMode ] = useState('light')
 
-    // useEffect(() => localStorage.themeMode = theme, [ theme ])
+    useEffect(() => {
+        if (localStorage.themeMode) {
+            setMode(localStorage.themeMode)
+        }
+    }, [])
 
     return <ThemeProvider
         theme={createTheme({
             palette: {
-                mode: theme,
+                mode,
+                ...(
+                    mode === 'dark' ?
+                        {
+                            background: {
+                                paper: '#303030',
+                                default: '#303030',
+                            }
+                        }
+                        :
+                        {}
+                )
             },
             typography: {
                 fontFamily: [ 'Poppins', 'Inter', 'sans-serif' ].join(', '),
@@ -25,7 +40,10 @@ const ThemeWrapper = ({ children }) => {
     >
         <ThemeContext.Provider
             value={{
-                toggleTheme: () => setTheme(prev => prev === 'light' ? 'dark' : 'light')
+                toggleTheme: () => {
+                    localStorage.themeMode = mode === 'light' ? 'dark' : 'light'
+                    setMode(prev => prev === 'light' ? 'dark' : 'light')
+                }
             }}
         >
             {children}

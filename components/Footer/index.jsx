@@ -67,18 +67,22 @@ const Footer = () => {
         </Head>
         <Paper
             square
-            elevation={ 0 }
-            sx={ { backgroundColor: '#1B1C31', color: 'white', padding: '5vh 10vh 5vh 10vh' } }
+            elevation={0}
+            sx={{
+                color: 'white',
+                backgroundColor: '#1B1C31',
+                padding: small ? '20px' : '50px'
+            }}
         >
             <Grid container>
                 <Grid
                     container item
-                    xs={ 12 } sm={ 12 } md={ 12 } lg={ 6 } xl={ 6 }
+                    xs={12} sm={12} md={12} lg={6} xl={6}
                 >
                     <Grid
                         item
-                        xs={ 12 }
-                        sx={ { marginBottom: '30px' } }
+                        xs={12}
+                        sx={{ marginBottom: '30px' }}
                     >
                         <Typography variant="h3">
                             Logo
@@ -86,8 +90,8 @@ const Footer = () => {
                     </Grid>
                     <Grid
                         item
-                        xs={ 12 } sm={ 12 } md={ 12 } lg={ 6 } xl={ 6 }
-                        sx={ { marginBottom: '25px' } }
+                        xs={12} sm={12} md={12} lg={6} xl={6}
+                        sx={{ marginBottom: '25px' }}
                     >
                         <Typography>
                             Address - lorem ipsum dolor sit amet, consectur adipiscing.
@@ -95,8 +99,8 @@ const Footer = () => {
                     </Grid>
                     <Grid
                         item
-                        xs={ 12 }
-                        sx={ { marginBottom: '30px' } }
+                        xs={12}
+                        sx={{ marginBottom: '30px' }}
                     >
                         <Typography>
                             xyz@gmail.com
@@ -104,8 +108,8 @@ const Footer = () => {
                     </Grid>
                     <Grid
                         item
-                        xs={ 12 }
-                        sx={ { marginBottom: '15px' } }
+                        xs={12}
+                        sx={{ marginBottom: '15px' }}
                     >
                         <Typography variant="h6">
                             Subscribe for updates
@@ -113,25 +117,25 @@ const Footer = () => {
                     </Grid>
                     <Grid
                         item
-                        xs={ 12 }
+                        xs={12}
                     >
                         <form>
                             <TextField
                                 placeholder="Your Email"
                                 variant="standard"
-                                InputProps={ {
+                                InputProps={{
                                     endAdornment: (
                                         <InputAdornment position="end">
                                             <Button
                                                 disableElevation
                                                 variant="contained"
-                                                sx={ {
+                                                sx={{
                                                     backgroundColor: '#5080FF',
                                                     color: 'white',
                                                     height: '50px',
                                                     padding: '0px 25px 0px 25px',
                                                     borderRadius: '0px 18px 18px 0px',
-                                                } }
+                                                }}
                                             >
                                                 Subscribe
                                             </Button>
@@ -144,56 +148,56 @@ const Footer = () => {
                                         height: '50px',
                                     },
                                     disableUnderline: true,
-                                } }
+                                }}
                             />
                         </form>
                     </Grid>
                 </Grid>
                 <Grid
                     container item
-                    xs={ 12 } sm={ 12 } md={ 12 } lg={ 6 } xl={ 6 }
-                    sx={ { height: '100%', marginTop: medium && !small ? '40px' : '0px' } }
+                    xs={12} sm={12} md={12} lg={6} xl={6}
+                    sx={{ height: '100%', marginTop: medium && !small ? '40px' : '0px' }}
                 >
                     <Grid
                         container item
-                        xs={ 12 } sm={ 12 } md={ 6 } lg={ 6 } xl={ 6 }
-                        sx={ small ? { marginTop: '40px' } : {} }
+                        xs={12} sm={12} md={6} lg={6} xl={6}
+                        sx={small ? { marginTop: '40px' } : {}}
                     >
                         <Grid item>
-                            <Typography variant="h5" sx={ { fontWeight: 700 } }>
+                            <Typography variant="h5" sx={{ fontWeight: 700 }}>
                                 Links
                             </Typography>
                             <br /><br />
                             {
-                                Links.map(({ link, path }, index) => <Fragment key={ link }>
-                                    <Link href={ path } passHref>
-                                        <Typography sx={ { cursor: 'pointer' } }>
-                                            { link }
+                                Links.map(({ link, path }, index) => <Fragment key={link}>
+                                    <Link href={path} passHref>
+                                        <Typography sx={{ cursor: 'pointer' }}>
+                                            {link}
                                         </Typography>
                                     </Link>
-                                    { Links.length === index + 1 ? <></> : <br /> }
+                                    {Links.length === index + 1 ? <></> : <br />}
                                 </Fragment>)
                             }
                         </Grid>
                     </Grid>
                     <Grid
                         container item
-                        xs={ 12 } sm={ 12 } md={ 6 } lg={ 6 } xl={ 6 }
-                        sx={ small ? { marginTop: '40px' } : {} }
+                        xs={12} sm={12} md={6} lg={6} xl={6}
+                        sx={small ? { marginTop: '40px' } : {}}
                     >
                         <Grid item>
-                            <Typography variant="h5" sx={ { fontWeight: 700 } }>
+                            <Typography variant="h5" sx={{ fontWeight: 700 }}>
                                 Projects
                             </Typography>
                             <br /><br />
                             {
-                                Projects.map(({ project, path }, index) => <Fragment key={ project }>
-                                    <Link href={ path } passHref>
-                                        <Typography sx={ { cursor: 'pointer' } }>
-                                            { project }
+                                Projects.map(({ project, path }, index) => <Fragment key={project}>
+                                    <Link href={path} passHref>
+                                        <Typography sx={{ cursor: 'pointer' }}>
+                                            {project}
                                         </Typography>
                                     </Link>
-                                    { Projects.length === index + 1 ? <></> : <br /> }
+                                    {Projects.length === index + 1 ? <></> : <br />}
                                 </Fragment>)
                             }
                         </Grid>
