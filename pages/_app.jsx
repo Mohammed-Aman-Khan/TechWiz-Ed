@@ -6,6 +6,7 @@ import Footer from '../components/Footer'
 import { Toaster } from 'react-hot-toast'
 import { ThemeContext } from '../util/theme'
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 const ThemeWrapper = ({ children }) => {
 
@@ -70,6 +71,12 @@ const BackgroundWrapper = ({ children }) => {
 }
 
 const HeaderFooterWrapper = ({ children }) => {
+
+    const router = useRouter()
+
+    if (router.pathname.startsWith('/projects') && router.pathname !== '/projects')
+        return children
+
     return <>
         <HeaderNav />
         {children}

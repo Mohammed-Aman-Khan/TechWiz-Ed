@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import { useBreakpoint, usePadding } from '../../util/responsive'
 import { getProjectCategories } from '../../util/cosmic'
 import { useTheme } from '@mui/material'
+import Link from 'next/link'
 
 const CategoryCard = ({
     title,
@@ -25,6 +26,7 @@ const CategoryCard = ({
             '&:hover': {
                 boxShadow: `0px 18px 40px -12px ${ theme.palette.mode === 'light' ? 'rgba(0, 0, 0, 0.5)' : 'rgba(255, 255, 255, 0.1)' }`,
             },
+            height: '100%',
         }}
     >
         <img src={image} alt={title} style={{ width: '100%', height: 'auto', borderRadius: 30, }} />
@@ -107,21 +109,26 @@ const Projects = () => {
                     >
                         {
                             categories
-                                .map(({ title, image, content }) =>
-                                    <Grid
-                                        item
+                                .map(({ title, image, content, slug }) =>
+                                    <Link
                                         key={title}
-                                        xs={12} sm={12} md={6} lg={6} xl={6}
+                                        href={`/projects/${ slug }`}
+                                        passHref
                                     >
-                                        <CategoryCard
-                                            {...{
-                                                title,
-                                                image,
-                                                content,
-                                                small,
-                                            }}
-                                        />
-                                    </Grid>
+                                        <Grid
+                                            item
+                                            xs={12} sm={12} md={6} lg={6} xl={6}
+                                        >
+                                            <CategoryCard
+                                                {...{
+                                                    title,
+                                                    image,
+                                                    content,
+                                                    small,
+                                                }}
+                                            />
+                                        </Grid>
+                                    </Link>
                                 )
                         }
                         {

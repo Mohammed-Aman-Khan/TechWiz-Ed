@@ -1,8 +1,6 @@
-import toast from 'react-hot-toast'
+import { showError } from './alerts'
 
 const Cosmic = require('cosmicjs')()
-
-// const Cosmic = cosmic()
 
 const TechwizBucket = Cosmic.bucket({
     slug: 'techwiz-ed-production',
@@ -15,18 +13,46 @@ export const getProjectCategories = async () => {
             query: {
                 type: 'project-categories'
             },
-            props: 'title,content,metadata',
-            limit: 20
+            props: 'title,slug,content,metadata',
+            limit: Infinity,
         })
         return data.objects
-            .map(({ title, content, metadata }) => ({
+            .map(({ title, content, slug, metadata }) => ({
                 title,
                 content,
+                slug,
                 image: metadata.category_image.url,
             }))
     }
     catch (error) {
-        toast.error(error.message)
+        showError(error.message)
+        return null
+    }
+}
+
+export const getProjectsForCategory = async (category) => {
+    try {
+        const data = await TechwizBucket.getObjects({
+            query: {
+                type: 'projects',
+            },
+            props: 'title,content,metadata',
+            limit: Infinity,
+        })
+        console.log(data.objects)
+        return data.objects
+            .map(({ metadata, content }) => ({
+                aboutProject: content,
+                projectName: metadata.project_name,
+                projectCategory: metadata.project_category,
+                animation: metadata.animation_file.url,
+                features: metadata.features,
+                learning: metadata.learning,
+            }))
+            .filter(({ projectCategory }) => projectCategory === category)
+    }
+    catch (error) {
+        showError(error.message)
         return null
     }
 }

@@ -77,12 +77,13 @@ const HeaderNav = () => {
                 // left: 0,
                 // backgroundColor: 'white',
                 // boxShadow: scrollY ? '0px 5px 50px -10px rgba(0, 0, 0, 0.2)' : 'none',
-                // zIndex: 2147483647,
+                zIndex: 2147483647,
             }}
             justifyContent='space-between'
             alignItems='center'
             flexDirection='row'
             direction='row'
+            id='#header'
         >
             <Grid item>
                 <div
