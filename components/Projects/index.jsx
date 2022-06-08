@@ -82,7 +82,7 @@ const Project = ({
                     }}
                 >
                     <Paper
-                        elevation={3}
+                        elevation={0}
                         sx={{
                             borderRadius: small ? '10px' : '20px',
                             padding: small ? '10px' : '20px',
@@ -107,7 +107,7 @@ const Project = ({
                     }}
                 >
                     <Paper
-                        elevation={3}
+                        elevation={0}
                         sx={{
                             borderRadius: small ? '10px' : '20px',
                             padding: small ? '10px' : '20px',
