@@ -272,7 +272,7 @@ const Footer = () => {
                         {
                             SocialLinks
                                 .map(({ icon, link }) =>
-                                    <a target='_blank' rel='noopener noreferrer' href={ link }>
+                                    <a key={ link } target='_blank' rel='noopener noreferrer' href={ link }>
                                         { icon }
                                     </a>
                                 )
