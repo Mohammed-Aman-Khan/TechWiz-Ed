@@ -204,9 +204,7 @@ const ProjectView = ({ projects = [], small }) => {
                     } }
                 />
             )
-        : <FullPage
-            scrollMode={ small ? 'normal' : 'full-page' }
-        >
+        : <FullPage>
             {
                 projects
                     .map(({
