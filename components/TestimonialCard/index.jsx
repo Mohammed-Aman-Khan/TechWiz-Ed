@@ -12,6 +12,9 @@ const TestimonialCard = ({
     image,
     text,
     small,
+    titleSize,
+    bodySize,
+    creditSize
 }) => {
     return <Paper
         elevation={ 0 }
@@ -26,7 +29,7 @@ const TestimonialCard = ({
             sx={ {
                 fontFamily: 'Poppins',
                 fontWeight: 500,
-                fontSize: small ? '18px' : '25px',
+                fontSize: titleSize,
                 lineHeight: small ? '25px' : '35px'
             } }
         >
@@ -60,7 +63,7 @@ const TestimonialCard = ({
                         color: '#535A72',
                         fontFamily: 'Poppins',
                         fontWeight: 500,
-                        fontSize: small ? '13px' : '16px',
+                        fontSize: bodySize,
                         lineHeight: small ? '18px' : '22px',
                     } }
                 >
@@ -80,7 +83,7 @@ const TestimonialCard = ({
                         color: '#535A72',
                         fontFamily: 'Poppins',
                         fontWeight: 500,
-                        fontSize: small ? '13px' : '16px',
+                        fontSize: bodySize,
                         lineHeight: small ? '18px' : '22px',
                     } }
                 >
@@ -96,7 +99,7 @@ const TestimonialCard = ({
                 color: '#7D849D',
                 fontFamily: 'Poppins',
                 fontWeight: 500,
-                fontSize: small ? '13px' : '16px',
+                fontSize: bodySize,
                 lineHeight: small ? '20px' : '30px',
             } }
         >

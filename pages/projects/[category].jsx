@@ -44,20 +44,20 @@ const Projects = () => {
 
     return <>
         <Head>
-            <title>{categories.find(({ slug }) => slug === category)?.title} Projects</title>
+            <title>{ categories.find(({ slug }) => slug === category)?.title } Projects</title>
         </Head>
         {
             projects.length ?
                 <ProjectView
-                    small={small}
-                    projects={projects}
+                    small={ small }
+                    projects={ projects }
                 />
                 : <></>
         }
         <Fab
             size="small"
             aria-label="Go Back"
-            sx={{
+            sx={ {
                 position: 'fixed',
                 left: small ? '5px' : '10px',
                 top: small ? '5px' : '10px',
@@ -67,8 +67,8 @@ const Projects = () => {
                     backgroundColor: theme.palette.mode === 'dark' ? 'black' : 'white',
                     color: theme.palette.mode === 'dark' ? 'white' : 'black',
                 }
-            }}
-            onClick={() => router.push('/projects')}
+            } }
+            onClick={ () => router.push('/projects') }
         >
             <ArrowBackIcon />
         </Fab>

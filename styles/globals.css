@@ -1,31 +1,37 @@
 html,
-body {
+body
+{
   padding: 0;
   margin: 0;
 }
 
-* {
+*
+{
   box-sizing: border-box;
 }
 
-.section-100vh {
+.section-100vh
+{
   /* height: calc(var(--vh, 1vh) * 100); */
   margin-bottom: 50px;
   padding: 50px 0px 50px 0px;
 }
 
-.section-min-100vh {
+.section-min-100vh
+{
   /* min-height: calc(var(--vh, 1vh) * 100); */
   margin-bottom: 50px;
   padding: 50px 0px 50px 0px;
 }
 
-.center {
+.center
+{
   justify-content: center;
   text-align: center;
 }
 
-.text-justify {
+.text-justify
+{
   text-align: justify;
   text-justify: auto;
 }

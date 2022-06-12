@@ -1,8 +1,8 @@
-import Fullpage from 'fullpage.js'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
 import Paper from '@mui/material/Paper'
-import { useEffect, useRef } from 'react'
+import { FullPage, Slide } from 'react-full-page'
+import { useResponsiveFontSize } from '../../util/responsive'
 
 const Project = ({
     projectName,
@@ -13,17 +13,15 @@ const Project = ({
     aboutProject,
     small
 }) => {
+
+    const { h3, h5, h6, body, helper } = useResponsiveFontSize()
+
     return <Grid
         container
-        className="section"
-        sx={{
-            height: '100vh',
+        sx={ {
+            height: small ? 'auto' : '100vh',
             padding: small ? '50px 20px 50px 20px' : '100px',
-            marginTop: '0px',
-            marginRight: '0px',
-            marginLeft: '0px',
-            marginBottom: '0px',
-        }}
+        } }
         justifyContent='center'
         alignItems='center'
     >
@@ -32,173 +30,211 @@ const Project = ({
         >
             <Grid
                 item
-                xs={12}
+                xs={ 12 }
             >
                 <Typography
-                    variant={small ? 'h4' : 'h3'}
+                    sx={ {
+                        fontSize: h3,
+                        fontWeight: 700
+                    } }
                 >
-                    {projectCategory}
+                    { projectCategory }
                 </Typography>
-                {small ? <br /> : <></>}
+                { small ? <><br /><br /><br /></> : <><br /><br /></> }
             </Grid>
             <Grid
                 container item
-                xs={12} sm={12} md={12} lg={8} xl={8}
+                xs={ 12 } sm={ 12 } md={ 12 } lg={ 8 } xl={ 8 }
             >
                 {
                     !small ? <>
-                        <Grid item xs={12} />
-                        <Grid item xs={12} />
-                        <Grid item xs={12} />
+                        <Grid item xs={ 12 } />
+                        <Grid item xs={ 12 } />
+                        <Grid item xs={ 12 } />
                     </> : <></>
                 }
                 <Grid
                     item
-                    xs={12}
+                    xs={ 12 }
                 >
                     <Typography
-                        variant={small ? 'h5' : 'h4'}
+                        sx={ {
+                            fontWeight: 600,
+                            fontSize: h5,
+                        } }
                     >
-                        {projectName}
+                        { projectName }
                     </Typography>
-                    {small ? <br /> : <></>}
+                    { small ? <br /> : <></> }
                     {
                         aboutProject ?
                             <>
                                 <Typography
-                                    dangerouslySetInnerHTML={{ __html: aboutProject }}
+                                    sx={ {
+                                        fontSize: body,
+                                        color: '#686F84'
+                                    } }
+                                    dangerouslySetInnerHTML={ { __html: aboutProject } }
                                 />
-                                {small ? <br /> : <></>}
+                                { small ? <br /> : <></> }
                             </> : <></>
                     }
                 </Grid>
-                <Grid item xs={12} />
-                <Grid item xs={12} />
+                <Grid item xs={ 12 } />
+                <Grid item xs={ 12 } />
                 <Grid
                     item
-                    xs={12}
-                    sx={{
+                    xs={ 12 }
+                    sx={ {
                         margin: '5px 0px 5px 0px',
-                    }}
+                    } }
                 >
                     <Paper
-                        elevation={0}
-                        sx={{
+                        elevation={ 0 }
+                        sx={ {
                             borderRadius: small ? '10px' : '20px',
                             padding: small ? '10px' : '20px',
                             overflowY: 'auto'
-                        }}
+                        } }
                     >
                         <Typography
-                            variant={small ? 'h6' : 'h4'}
+                            sx={ {
+                                fontSize: h6,
+                                fontWeight: 600
+                            } }
                         >
                             Features
                         </Typography>
                         <Typography
-                            dangerouslySetInnerHTML={{ __html: features }}
+                            sx={ {
+                                fontSize: helper,
+                                color: '#686F84'
+                            } }
+                            dangerouslySetInnerHTML={ { __html: features } }
                         />
                     </Paper>
                 </Grid>
                 <Grid
                     item
-                    xs={12}
-                    sx={{
+                    xs={ 12 }
+                    sx={ {
                         margin: '5px 0px 5px 0px'
-                    }}
+                    } }
                 >
                     <Paper
-                        elevation={0}
-                        sx={{
+                        elevation={ 0 }
+                        sx={ {
                             borderRadius: small ? '10px' : '20px',
                             padding: small ? '10px' : '20px',
                             overflowY: 'auto'
-                        }}
+                        } }
                     >
                         <Typography
-                            variant={small ? 'h6' : 'h4'}
+                            sx={ {
+                                fontSize: h6,
+                                fontWeight: 600
+                            } }
                         >
                             Learning
                         </Typography>
                         <Typography
-                            dangerouslySetInnerHTML={{ __html: learning }}
+                            sx={ {
+                                fontSize: helper,
+                                color: '#686F84'
+                            } }
+                            dangerouslySetInnerHTML={ { __html: learning } }
                         />
                     </Paper>
                 </Grid>
             </Grid>
             <Grid
                 container item
-                xs={12} sm={12} md={12} lg={4} xl={4}
+                xs={ 12 } sm={ 12 } md={ 12 } lg={ 4 } xl={ 4 }
                 alignItems='center'
                 justifyContent='center'
-                sx={{
+                sx={ {
                     height: '100%',
-                }}
+                } }
             >
                 <Grid
                     item
-                    xs={12}
-                    sx={{
+                    xs={ 12 }
+                    sx={ {
                         width: '100%',
                         height: 'auto',
-                    }}
+                    } }
                 >
                     <img
                         alt="Animation"
-                        src={animation}
-                        style={{
+                        src={ animation }
+                        style={ {
                             width: '100%',
                             height: 'auto',
-                        }}
+                            borderRadius: small ? 20 : 40,
+                        } }
                     />
                 </Grid>
             </Grid>
         </Grid>
-    </Grid >
+    </Grid>
 }
 
 const ProjectView = ({ projects = [], small }) => {
 
-    const containerRef = useRef()
-
-    useEffect(() => {
-        if (containerRef.current)
-            setTimeout(() => {
-                new Fullpage('#fullpage', {
-                    autoScrolling: true,
-                    scrollHorizontally: true,
-                    credits: { enabled: false }
-                })
-            }, 2000)
-    }, [])
-
-    return <div className='fullpage' id='fullpage' ref={containerRef} style={{ height: '100vh', }}>
-        {
-            projects
-                .map(({
-                    projectName,
-                    projectCategory,
-                    animation,
-                    features,
-                    learning,
-                    aboutProject,
-                }) =>
-                    <Project
-                        key={projectName}
-                        {
-                        ...{
-                            projectName,
-                            projectCategory,
-                            animation,
-                            features,
-                            learning,
-                            aboutProject,
-                            small,
-                        }
-                        }
-                    />
-                )
-        }
-    </div>
+    return small ?
+        projects
+            .map(({
+                projectName,
+                projectCategory,
+                animation,
+                features,
+                learning,
+                aboutProject,
+            }) =>
+                <Project
+                    key={ projectName }
+                    { ...{
+                        projectName,
+                        projectCategory,
+                        animation,
+                        features,
+                        learning,
+                        aboutProject,
+                        small,
+                    } }
+                />
+            )
+        : <FullPage
+            scrollMode={ small ? 'normal' : 'full-page' }
+        >
+            {
+                projects
+                    .map(({
+                        projectName,
+                        projectCategory,
+                        animation,
+                        features,
+                        learning,
+                        aboutProject,
+                    }) =>
+                        <Slide
+                            key={ projectName }
+                        >
+                            <Project
+                                { ...{
+                                    projectName,
+                                    projectCategory,
+                                    animation,
+                                    features,
+                                    learning,
+                                    aboutProject,
+                                    small,
+                                } }
+                            />
+                        </Slide>
+                    )
+            }
+        </FullPage>
 }
 
 export default ProjectView
