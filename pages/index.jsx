@@ -305,6 +305,7 @@ const LandingPage = () => {
                 <Grid item
                     xs={ 12 } sm={ 12 } md={ 12 } lg={ 6 } xl={ 6 }
                 >
+                    { small ? <><br /><br /><br /></> : <></> }
                     <img src='/big-screen-hero.svg' alt="Illustration" style={ { width: '100%', height: 'auto' } } />
                 </Grid>
             </Grid>
