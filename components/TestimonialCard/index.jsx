@@ -100,7 +100,7 @@ const TestimonialCard = ({
                 fontFamily: 'Poppins',
                 fontWeight: 500,
                 fontSize: bodySize,
-                lineHeight: small ? '20px' : '30px',
+                lineHeight: small ? '18px' : '22px',
             } }
         >
             { text }

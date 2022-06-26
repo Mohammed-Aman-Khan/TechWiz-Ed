@@ -16,6 +16,7 @@ import YouTubeIcon from '@mui/icons-material/YouTube'
 import FacebookIcon from '@mui/icons-material/Facebook'
 import CopyrightIcon from '@mui/icons-material/Copyright'
 import Stack from '@mui/material/Stack'
+import { ThemeProvider, createTheme } from '@mui/material'
 
 const Links = [
     {
@@ -157,40 +158,48 @@ const Footer = () => {
                         xs={ 12 }
                     >
                         <form>
-                            <TextField
-                                placeholder="Your Email"
-                                variant="standard"
-                                InputProps={ {
-                                    style: {
-                                        fontSize: caption,
-                                    },
-                                    endAdornment: (
-                                        <InputAdornment position="end">
-                                            <Button
-                                                disableElevation
-                                                variant="contained"
-                                                sx={ {
-                                                    backgroundColor: '#5080FF',
-                                                    color: 'white',
-                                                    height: '50px',
-                                                    padding: '0px 25px 0px 25px',
-                                                    borderRadius: '0px 18px 18px 0px',
-                                                    fontSize: caption,
-                                                } }
-                                            >
-                                                Subscribe
-                                            </Button>
-                                        </InputAdornment>
-                                    ),
-                                    sx: {
-                                        backgroundColor: 'white',
-                                        borderRadius: '18px',
-                                        paddingLeft: '25px',
-                                        height: '50px',
-                                    },
-                                    disableUnderline: true,
-                                } }
-                            />
+                            <ThemeProvider
+                                theme={ createTheme({
+                                    palette: {
+                                        mode: 'light'
+                                    }
+                                }) }
+                            >
+                                <TextField
+                                    placeholder="Your Email"
+                                    variant="standard"
+                                    InputProps={ {
+                                        style: {
+                                            fontSize: caption,
+                                        },
+                                        endAdornment: (
+                                            <InputAdornment position="end">
+                                                <Button
+                                                    disableElevation
+                                                    variant="contained"
+                                                    sx={ {
+                                                        backgroundColor: '#5080FF',
+                                                        color: 'white',
+                                                        height: '50px',
+                                                        padding: '0px 25px 0px 25px',
+                                                        borderRadius: '0px 18px 18px 0px',
+                                                        fontSize: caption,
+                                                    } }
+                                                >
+                                                    Subscribe
+                                                </Button>
+                                            </InputAdornment>
+                                        ),
+                                        sx: {
+                                            backgroundColor: 'white',
+                                            borderRadius: '18px',
+                                            paddingLeft: '25px',
+                                            height: '50px',
+                                        },
+                                        disableUnderline: true,
+                                    } }
+                                />
+                            </ThemeProvider>
                         </form>
                     </Grid>
                 </Grid>

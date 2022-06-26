@@ -10,6 +10,7 @@ import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined'
 import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined'
 import { useBreakpoint, usePadding, useResponsiveFontSize } from '../util/responsive'
 import { useTheme } from '@mui/material'
+import { IMAGES } from '../util/cdn-urls'
 
 const HeroText = ({ children, small, fontSize }) => {
     return <Typography
@@ -17,7 +18,7 @@ const HeroText = ({ children, small, fontSize }) => {
         sx={ {
             fontWeight: small ? 600 : 700,
             fontSize: fontSize,
-            lineHeight: small ? '70px' : '100px',
+            lineHeight: small ? '50px' : '100px',
         } }
     >
         { children }
@@ -117,9 +118,13 @@ const Careers = () => {
                     xs={ 12 } sm={ 12 } md={ 12 } lg={ 6 } xl={ 6 }
                 >
                     <img
-                        src='/careers-hero.svg'
+                        src={ IMAGES.CAREERS_PAGE.CAREERS }
                         alt="Illustration"
-                        style={ { width: '100%', height: 'auto' } }
+                        style={ {
+                            width: '100%',
+                            height: 'auto',
+                            borderRadius: 10,
+                        } }
                     />
                 </Grid>
             </Grid>
@@ -131,7 +136,7 @@ const Careers = () => {
                         fontFamily: 'Inter',
                         fontSize: h4,
                         fontWeight: 600,
-                        lineHeight: small ? '55px' : '80px',
+                        lineHeight: small ? '50px' : '75px',
                     } }
                 >
                     Apply here for Jobs
@@ -141,7 +146,7 @@ const Careers = () => {
                     sx={ {
                         fontWeight: 400,
                         fontSize: body,
-                        lineHeight: small ? '35px' : '50px',
+                        lineHeight: small ? '30px' : '45px',
                         color: '#686F84',
                         letterSpacing: '-0.02em',
                     } }
@@ -290,7 +295,7 @@ const Careers = () => {
                             color: 'white',
                             fontSize: h6,
                             fontWeight: small ? 500 : 600,
-                            lineHeight: small ? '35px' : '50px',
+                            lineHeight: small ? '30px' : '45px',
                             padding: small ? '10px 30px 10px 30px' : '15px 50px 15px 50px',
                             borderRadius: '40px',
                             '&:hover': {

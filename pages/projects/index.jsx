@@ -47,7 +47,7 @@ const CategoryCard = ({
                 fontFamily: 'Poppins',
                 fontWeight: small ? 300 : 400,
                 fontSize: contentSize,
-                lineHeight: small ? '30px' : '40px',
+                lineHeight: small ? '30px' : '45px',
             } }
             dangerouslySetInnerHTML={ { __html: content } }
         >
@@ -86,7 +86,7 @@ const Projects = () => {
                             fontFamily: 'Poppins',
                             fontWeight: small ? 600 : 700,
                             fontSize: h4,
-                            lineHeight: small ? '70px' : '100px',
+                            lineHeight: small ? '40px' : '60px',
                         } }
                     >
                         Explore Projects

@@ -1,7 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
-import { usePadding, useBreakpoint, vh, useResponsiveFontSize } from '../util/responsive'
+import { IMAGES } from '../util/cdn-urls'
+import { usePadding, useBreakpoint, useResponsiveFontSize } from '../util/responsive'
 
 const About = () => {
 
@@ -27,7 +28,7 @@ const About = () => {
                                 fontFamily: 'Inter',
                                 fontWeight: small ? 600 : 700,
                                 fontSize: h4,
-                                lineHeight: small ? '70px' : '100px',
+                                lineHeight: small ? '40px' : '60px',
                             } }
                         >
                             Meet our team
@@ -45,7 +46,15 @@ const About = () => {
                             Come visit our friendly team
                         </Typography>
                         <br /><br /><br />
-                        <img src='/meet our team.svg' alt="Meet our team" style={ { width: small ? '100%' : '85%', height: 'auto' } } />
+                        <img
+                            src={ IMAGES.ABOUT_PAGE.TEAM }
+                            alt="Meet our team"
+                            style={ {
+                                width: '100%',
+                                height: 'auto',
+                                borderRadius: 10,
+                            } }
+                        />
                     </center>
                 </Grid>
             </Grid>
@@ -72,7 +81,7 @@ const About = () => {
                                 fontFamily: 'Inter',
                                 fontWeight: small ? 600 : 700,
                                 fontSize: h4,
-                                lineHeight: small ? '70px' : '100px',
+                                lineHeight: small ? '40px' : '60px',
                             } }
                         >
                             What products are we into?
@@ -95,9 +104,13 @@ const About = () => {
                         xs={ 12 } sm={ 12 } md={ 12 } lg={ 6 } xl={ 6 }
                     >
                         <img
-                            src='/what products.svg'
+                            src={ IMAGES.ABOUT_PAGE.PRODUCTS }
                             alt='What products are we into'
-                            style={ { borderRadius: 20, width: '100%', height: 'auto' } }
+                            style={ {
+                                width: '100%',
+                                height: 'auto',
+                                borderRadius: 10,
+                            } }
                         />
                     </Grid>
                 </Grid>
@@ -121,9 +134,13 @@ const About = () => {
                         xs={ 12 } sm={ 12 } md={ 12 } lg={ 6 } xl={ 6 }
                     >
                         <img
-                            src='/future scope.svg'
+                            src={ IMAGES.ABOUT_PAGE.SCOPE }
                             alt='Future Scope'
-                            style={ { borderRadius: 20, width: '100%', height: 'auto' } }
+                            style={ {
+                                width: '100%',
+                                height: 'auto',
+                                borderRadius: 10,
+                            } }
                         />
                     </Grid>
                     <Grid
@@ -135,7 +152,7 @@ const About = () => {
                                 fontFamily: 'Inter',
                                 fontWeight: small ? 600 : 700,
                                 fontSize: h4,
-                                lineHeight: small ? '70px' : '100px',
+                                lineHeight: small ? '40px' : '60px',
                             } }
                         >
                             Future Scope
@@ -173,7 +190,7 @@ const About = () => {
                                 fontFamily: 'Inter',
                                 fontWeight: small ? 600 : 700,
                                 fontSize: h4,
-                                lineHeight: small ? '70px' : '100px',
+                                lineHeight: small ? '40px' : '60px',
                             } }
                         >
                             Our Ethics
@@ -196,14 +213,22 @@ const About = () => {
                                 fontFamily: 'Inter',
                                 fontWeight: 600,
                                 fontSize: body,
-                                lineHeight: small ? '60px' : '75px',
-                                color: '#535A72',
+                                lineHeight: small ? '30px' : '40px',
+                                color: '#6E7387',
                             } }
                         >
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tristique id mauris velit vulputate lectus libero, est. Sed ultrices malesuada senectus lectus lectus bibendum turpis montes, sit. Dis sagittis amet, pulvinar urna, velit tincidunt turpis nec. Turpis mauris sapien ut id. Sed ullamcorper eu, sed condimentum elit aliquam. Aliquet mauris, est morbi diam quis elit nibh nibh consectetur. Nunc nunc pulvinar donec sed libero cursus.
                         </Typography>
                         <br /><br /><br /><br /><br />
-                        <img src='/ethics.svg' alt='Ethics' style={ { width: '80%', height: 'auto' } } />
+                        <img
+                            src='/ethics.jpg'
+                            alt='Ethics'
+                            style={ {
+                                width: '80%',
+                                height: 'auto',
+                                borderRadius: 10
+                            } }
+                        />
                     </center>
                 </Grid>
             </Grid>
@@ -225,7 +250,7 @@ const About = () => {
                                 fontFamily: 'Inter',
                                 fontWeight: small ? 600 : 700,
                                 fontSize: h4,
-                                lineHeight: small ? '70px' : '100px',
+                                lineHeight: small ? '40px' : '60px',
                             } }
                         >
                             Our Mission
@@ -234,10 +259,10 @@ const About = () => {
                         <Typography
                             sx={ {
                                 fontFamily: 'Inter',
-                                fontWeight: 400,
+                                fontWeight: 600,
                                 fontSize: body,
-                                lineHeight: small ? '40px' : '60px',
-                                color: '#535A72',
+                                lineHeight: small ? '30px' : '45px',
+                                color: '#6E7387',
                             } }
                         >
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tristique id mauris velit vulputate lectus libero, est. Sed ultrices malesuada senectus lectus lectus bibendum turpis montes, sit. Dis sagittis amet, pulvinar urna, velit tincidunt turpis nec. Turpis mauris sapien ut id. Sed ullamcorper eu, sed condimentum elit aliquam. Aliquet mauris, est morbi diam quis elit nibh nibh consectetur. Nunc nunc pulvinar donec sed libero cursus.
@@ -264,8 +289,13 @@ const About = () => {
                         xs={ 12 } sm={ 12 } md={ 12 } lg={ 6 } xl={ 6 }
                     >
                         <img
-                            src='/vision-about.svg' alt='Future Scope'
-                            style={ { borderRadius: 20, width: '100%', height: 'auto' } }
+                            src={ IMAGES.ABOUT_PAGE.VISION }
+                            alt='Our Vision'
+                            style={ {
+                                width: '100%',
+                                height: 'auto',
+                                borderRadius: 10,
+                            } }
                         />
                     </Grid>
                     <Grid
@@ -277,7 +307,7 @@ const About = () => {
                                 fontFamily: 'Inter',
                                 fontWeight: small ? 600 : 700,
                                 fontSize: h4,
-                                lineHeight: small ? '70px' : '100px',
+                                lineHeight: small ? '40px' : '60px',
                             } }
                         >
                             Our Vision

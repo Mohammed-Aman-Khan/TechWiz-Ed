@@ -5,13 +5,14 @@ import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import { useBreakpoint, usePadding, useResponsiveFontSize, } from '../util/responsive'
 import FavoriteIcon from '@mui/icons-material/Favorite'
+import { IMAGES } from '../util/cdn-urls'
 
 const HeroText = ({ children, small, fontSize }) => {
     return <Typography
         sx={ {
             fontWeight: 700,
             fontSize,
-            lineHeight: small ? '60px' : '100px',
+            lineHeight: small ? '50px' : '75px',
             fontFamily: 'Inter',
             display: 'flex',
             alignItems: 'center'
@@ -177,7 +178,7 @@ const Contact = () => {
                                     color: 'white',
                                     fontSize: h6,
                                     fontWeight: 600,
-                                    lineHeight: small ? '35px' : '50px',
+                                    lineHeight: small ? '30px' : '45px',
                                     padding: small ? '10px 25px 10px 25px' : '15px 50px 15px 50px',
                                     borderRadius: '40px',
                                     '&:hover': {
@@ -198,11 +199,12 @@ const Contact = () => {
                 >
                     <Grid item>
                         <img
-                            src='https://img.freepik.com/free-vector/get-touch-concept-illustration_114360-2586.jpg'
-                            style={ small ?
-                                { width: '90vw', height: 'auto' } :
-                                { width: '100%', height: 'auto' }
-                            }
+                            src={ IMAGES.CONTACT_PAGE.CONTACT }
+                            style={ {
+                                width: small ? '90vw' : '100%',
+                                height: 'auto',
+                                borderRadius: 10,
+                            } }
                             alt="Illustration"
                         />
                     </Grid>

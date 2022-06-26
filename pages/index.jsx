@@ -14,6 +14,14 @@ import Divider from '@mui/material/Divider'
 import Chip from '@mui/material/Chip'
 import { useBreakpoint, usePadding, useResponsiveFontSize } from '../util/responsive'
 import Link from 'next/link'
+import { IMAGES, VIDEO, _3D_MODEL } from '../util/cdn-urls'
+import dynamic from 'next/dynamic'
+import { QUESTIONS, TESTIMONIALS, WHAT_CAN_ED_DO } from '../content/home-page'
+
+const _3D_Model_Viewer = dynamic(
+    () => import('../components/_3D_Model_Viewer'),
+    { ssr: false }
+)
 
 const HeroText = ({ children, style = {}, small }) => {
     return <Typography
@@ -56,7 +64,7 @@ const WhatCanItDo = ({
                 fontFamily: 'Poppins',
                 fontWeight: small ? 600 : 700,
                 fontSize: headingSize,
-                lineHeigth: small ? '35px' : '60px',
+                lineHeight: small ? '35px' : '60px',
             } }
         >
             { title }
@@ -68,7 +76,7 @@ const WhatCanItDo = ({
                 fontFamily: 'Poppins',
                 fontWeight: 400,
                 fontSize: bodySize,
-                lineHeigth: small ? '25px' : '34px',
+                lineHeight: small ? '25px' : '35px',
                 color: '#6E7387',
             } }
         >
@@ -89,97 +97,12 @@ const Accordion = styled((props) => (
     },
 }))
 
-const testimonials = [
-    {
-        title: 'Great way to boost work culture whilst working',
-        user: 'Sehaj Sharma',
-        rating: 4.9,
-        image: '/sample testimonial image.svg',
-        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam netus mattis enim sollicitudin ipsum enim. Amet vitae pellentesque lectus potenti maecenas adipiscing.',
-    },
-    {
-        title: 'Great way to boost work culture whilst working',
-        user: 'Sehaj Sharma',
-        rating: 4.9,
-        image: '/sample testimonial image.svg',
-        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam netus mattis enim sollicitudin ipsum enim. Amet vitae pellentesque lectus potenti maecenas adipiscing.',
-    },
-    {
-        title: 'Great way to boost work culture whilst working',
-        user: 'Sehaj Sharma',
-        rating: 4.9,
-        image: '/sample testimonial image.svg',
-        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam netus mattis enim sollicitudin ipsum enim. Amet vitae pellentesque lectus potenti maecenas adipiscing.',
-    },
-    {
-        title: 'Great way to boost work culture whilst working',
-        user: 'Sehaj Sharma',
-        rating: 4.9,
-        image: '/sample testimonial image.svg',
-        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam netus mattis enim sollicitudin ipsum enim. Amet vitae pellentesque lectus potenti maecenas adipiscing.',
-    },
-    {
-        title: 'Great way to boost work culture whilst working',
-        user: 'Sehaj Sharma',
-        rating: 4.9,
-        image: '/sample testimonial image.svg',
-        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam netus mattis enim sollicitudin ipsum enim. Amet vitae pellentesque lectus potenti maecenas adipiscing.',
-    },
-    {
-        title: 'Great way to boost work culture whilst working',
-        user: 'Sehaj Sharma',
-        rating: 4.9,
-        image: '/sample testimonial image.svg',
-        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam netus mattis enim sollicitudin ipsum enim. Amet vitae pellentesque lectus potenti maecenas adipiscing.',
-    },
-]
-
-const whatCanEdDo = [
-    {
-        title: 'Supports Arduino',
-        text: 'The flexible nature of Arduino lets the user have easy access to control GPIO pins and use variety of communication protocols to interface various sensors and internal hardware of the device.',
-        color: '#AAA7FF',
-        number: '01',
-    },
-    {
-        title: 'GSM, Wi-Fi, Bluetooth',
-        text: 'GSM give access to calls and SMS whereas Wi-Fi gives access to different internet protocols and APIs.While Bluetooth can connect to different devices, making this IoT enabled smart device.',
-        color: '#FFB78D',
-        number: '02',
-    },
-    {
-        title: 'Camera & Touch Screen Display',
-        text: 'The device gives low level access to camera and lets user manipulate pictures by using various ML models.The user can interact with device through various touch gestures.',
-        color: '#86E195',
-        number: '03',
-    },
-]
-
-const questions = [
-    {
-        question: 'How does it work?',
-        answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit massa diam in fermentum morbi proin et vestibulum sodales.',
-    },
-    {
-        question: 'Are there any additional charges?',
-        answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit massa diam in fermentum morbi proin et vestibulum sodales.',
-    },
-    {
-        question: 'How can I purchase the product?',
-        answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit massa diam in fermentum morbi proin et vestibulum sodales.',
-    },
-    {
-        question: 'What features do you offer an what not?',
-        answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit massa diam in fermentum morbi proin et vestibulum sodales.',
-    },
-]
-
 const LandingPage = () => {
 
     const small = useBreakpoint()
     const containerPadding = usePadding('container')
     const { h1, h4, h5, h6, body, caption } = useResponsiveFontSize()
-    const [ expanded, setExpanded ] = useState(questions[ 0 ].question)
+    const [ expanded, setExpanded ] = useState(QUESTIONS[ 0 ].question)
 
     const handleChange = (panel) => (event, newExpanded) => {
         setExpanded(newExpanded ? panel : false)
@@ -302,11 +225,23 @@ const LandingPage = () => {
                         Learn More
                     </Button>
                 </Grid>
-                <Grid item
+                <Grid
+                    item
                     xs={ 12 } sm={ 12 } md={ 12 } lg={ 6 } xl={ 6 }
                 >
                     { small ? <><br /><br /><br /></> : <></> }
-                    <img src='/big-screen-hero.svg' alt="Illustration" style={ { width: '100%', height: 'auto' } } />
+                    <center>
+                        <img
+                            src={ IMAGES.HOME_PAGE.LANDING }
+                            alt="Illustration"
+                            style={ {
+                                width: '100%',
+                                maxWidth: '400px',
+                                height: 'auto',
+                                borderRadius: 10,
+                            } }
+                        />
+                    </center>
                 </Grid>
             </Grid>
         </section>
@@ -334,7 +269,7 @@ const LandingPage = () => {
                             fontFamily: 'Poppins',
                             color: '#6E7387',
                             maxWidth: small ? '90%' : '1200px',
-                            lineHeight: small ? '35px' : '51px',
+                            lineHeight: small ? '30px' : '45px',
                             fontSize: h6
                         } }
                     >
@@ -342,7 +277,16 @@ const LandingPage = () => {
                         The flexibility and features of this product enables users to learn cutting-edge technology through
                         exciting and fun-filled experience.
                     </Typography>
-                    <img src="/floating ed.png" alt="Floating Ed" style={ { width: '90vw', maxWidth: 750, height: 'auto', marginTop: 150 } } />
+                    <div
+                        style={ {
+                            width: '100%',
+                            height: small ? '50vh' : '75vh',
+                        } }
+                    >
+                        <_3D_Model_Viewer
+                            link={ _3D_MODEL }
+                        />
+                    </div>
                 </center>
             </Grid>
         </section>
@@ -369,7 +313,7 @@ const LandingPage = () => {
                             fontFamily: 'Poppins',
                             color: '#6E7387',
                             maxWidth: small ? '90%' : '1200px',
-                            lineHeight: small ? '35px' : '51px',
+                            lineHeight: small ? '30px' : '45px',
                             fontSize: h6
                         } }
                     >
@@ -391,7 +335,7 @@ const LandingPage = () => {
                         xs={ 12 } sm={ 12 } md={ 6 } lg={ 6 } xl={ 6 }
                     >
                         {
-                            whatCanEdDo
+                            WHAT_CAN_ED_DO
                                 .map(({
                                     title,
                                     text,
@@ -429,18 +373,19 @@ const LandingPage = () => {
                                 display: 'flex',
                                 justifyContent: 'center',
                                 alignItems: 'center',
-                                backgroundColor: '#BEBDFF',
+                                // backgroundColor: '#BEBDFF',
                                 borderRadius: '50px',
                                 padding: '20px'
                             } }
                         >
                             <img
-                                src='/lightphone.png'
+                                src={ IMAGES.HOME_PAGE.EXPLORE }
                                 alt="The Ed Phone"
-                                style={ small ?
-                                    { width: '100%', height: 'auto', maxWidth: 400 } :
-                                    { width: '50%', height: 'auto' }
-                                }
+                                style={ {
+                                    width: '100%',
+                                    height: 'auto',
+                                    borderRadius: 10,
+                                } }
                             />
                         </div>
                     </Grid>
@@ -471,7 +416,7 @@ const LandingPage = () => {
                             fontFamily: 'Poppins',
                             color: '#6E7387',
                             maxWidth: small ? '100%' : '1200px',
-                            lineHeight: small ? '35px' : '51px',
+                            lineHeight: small ? '30px' : '45px',
                             fontSize: h6,
                         } }
                     >
@@ -479,7 +424,7 @@ const LandingPage = () => {
                     </Typography>
                     <br /><br />
                     <video controls style={ { width: small ? '100%' : '80%', height: 'auto', outline: 'none', borderRadius: 10 } }>
-                        <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type='video/mp4' />
+                        <source src={ VIDEO } type='video/mp4' />
                     </video>
                     <br /><br />
                     <Link
@@ -492,7 +437,7 @@ const LandingPage = () => {
                                 color: 'white',
                                 fontSize: body,
                                 fontWeight: 600,
-                                lineHeight: '50px',
+                                lineHeight: small ? '35px' : '50px',
                                 padding: '5px 50px 5px 50px',
                                 borderRadius: '40px',
                                 '&:hover': {
@@ -526,7 +471,15 @@ const LandingPage = () => {
                         className={ small && 'center' }
                         xs={ 12 } sm={ 12 } md={ 12 } lg={ 6 } xl={ 6 }
                     >
-                        <img src='/our vision.svg' alt="Our Vision" style={ { width: '100%', height: 'auto' } } />
+                        <img
+                            src={ IMAGES.HOME_PAGE.VISION }
+                            alt="Our Vision"
+                            style={ {
+                                width: '100%',
+                                height: 'auto',
+                                borderRadius: 10,
+                            } }
+                        />
                     </Grid>
                     <Grid
                         item
@@ -547,10 +500,9 @@ const LandingPage = () => {
                                 fontFamily: 'Poppins',
                                 color: '#6E7387',
                                 maxWidth: small ? '100%' : '600px',
-                                lineHeight: small ? '35px' : '51px',
+                                lineHeight: small ? '30px' : '45px',
                                 fontSize: h6,
                             } }
-                        // className='text-justify'
                         >
                             To develop cutting edge ED-Tech products and career building courses to make a difference in the education sector.
                         </Typography>
@@ -585,10 +537,9 @@ const LandingPage = () => {
                                 fontFamily: 'Poppins',
                                 color: '#6E7387',
                                 maxWidth: small ? '100%' : '1200px',
-                                lineHeight: small ? '35px' : '51px',
+                                lineHeight: small ? '30px' : '45px',
                                 fontSize: h6
                             } }
-                        // className='text-justify'
                         >
                             A futuristic product like ED-Phone and other services like the LMS platform, faculty Development Programs and Student workshops are the steps taken to realize our vision.
                         </Typography>
@@ -633,7 +584,7 @@ const LandingPage = () => {
                                         fontFamily: 'Poppins',
                                         color: '#6E7387',
                                         maxWidth: small ? '100%' : '1000px',
-                                        lineHeight: small ? '35px' : '51px',
+                                        lineHeight: small ? '30px' : '45px',
                                         fontSize: h6,
                                     } }
                                 >
@@ -650,7 +601,7 @@ const LandingPage = () => {
                         spacing={ small ? 5 : 10 }
                     >
                         {
-                            testimonials
+                            TESTIMONIALS
                                 .map(({
                                     title,
                                     user,
@@ -707,7 +658,7 @@ const LandingPage = () => {
                                 fontFamily: 'Poppins',
                                 fontWeight: 600,
                                 fontSize: h4,
-                                lineHeight: small ? '60px' : '90px',
+                                lineHeight: small ? '50px' : '75px',
                             } }
                         >
                             Any questions?
@@ -720,7 +671,7 @@ const LandingPage = () => {
                                 fontFamily: 'Poppins',
                                 fontWeight: 500,
                                 fontSize: body,
-                                lineHeight: small ? '30px' : '52px',
+                                lineHeight: small ? '30px' : '45px',
                                 color: '#6E7387',
                             } }
                         >
@@ -732,7 +683,7 @@ const LandingPage = () => {
                         xs={ 12 } sm={ 12 } md={ 12 } lg={ 6 } xl={ 6 }
                     >
                         {
-                            questions
+                            QUESTIONS
                                 .map(({ question, answer }, index, arr) => <Fragment key={ question }>
                                     <Accordion
                                         expanded={ expanded === question }
