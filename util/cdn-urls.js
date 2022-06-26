@@ -11,7 +11,7 @@ export const IMAGES = {
         VISION: 'https://imgix.cosmicjs.com/ff3ce820-f53b-11ec-a2eb-c1653f3f9199-vision.jpg',
     },
     CAREERS_PAGE: {
-        CAREERS: 'https://imgix.cosmicjs.com/43652690-f53f-11ec-a2eb-c1653f3f9199-careers.svg',
+        CAREERS: 'https://imgix.cosmicjs.com/b4873710-f54d-11ec-a2eb-c1653f3f9199-careers.svg',
     },
     CONTACT_PAGE: {
         CONTACT: 'https://imgix.cosmicjs.com/9cb2c8b0-f53f-11ec-a2eb-c1653f3f9199-contact.svg',
