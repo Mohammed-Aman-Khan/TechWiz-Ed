@@ -129,20 +129,26 @@ const About = () => {
                     spacing={ 10 }
                     alignItems='center'
                 >
-                    <Grid
-                        item
-                        xs={ 12 } sm={ 12 } md={ 12 } lg={ 6 } xl={ 6 }
-                    >
-                        <img
-                            src={ IMAGES.ABOUT_PAGE.SCOPE }
-                            alt='Future Scope'
-                            style={ {
-                                width: '100%',
-                                height: 'auto',
-                                borderRadius: 10,
-                            } }
-                        />
-                    </Grid>
+                    {
+                        !small
+                            ?
+                            <Grid
+                                item
+                                xs={ 12 } sm={ 12 } md={ 12 } lg={ 6 } xl={ 6 }
+                            >
+                                <img
+                                    src={ IMAGES.ABOUT_PAGE.SCOPE }
+                                    alt='Future Scope'
+                                    style={ {
+                                        width: '100%',
+                                        height: 'auto',
+                                        borderRadius: 10,
+                                    } }
+                                />
+                            </Grid>
+                            :
+                            <></>
+                    }
                     <Grid
                         item
                         xs={ 12 } sm={ 12 } md={ 12 } lg={ 6 } xl={ 6 }
@@ -170,6 +176,26 @@ const About = () => {
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Non amet, adipiscing quis sit et, rutrum sit cras.
                         </Typography>
                     </Grid>
+                    {
+                        small
+                            ?
+                            <Grid
+                                item
+                                xs={ 12 } sm={ 12 } md={ 12 } lg={ 6 } xl={ 6 }
+                            >
+                                <img
+                                    src={ IMAGES.ABOUT_PAGE.SCOPE }
+                                    alt='Future Scope'
+                                    style={ {
+                                        width: '100%',
+                                        height: 'auto',
+                                        borderRadius: 10,
+                                    } }
+                                />
+                            </Grid>
+                            :
+                            <></>
+                    }
                 </Grid>
             </Grid>
         </section>
@@ -221,7 +247,7 @@ const About = () => {
                         </Typography>
                         <br /><br /><br /><br /><br />
                         <img
-                            src='/ethics.jpg'
+                            src={ IMAGES.ABOUT_PAGE.ETHICS }
                             alt='Ethics'
                             style={ {
                                 width: '80%',
