@@ -14,16 +14,17 @@
     "@google/model-viewer": "^1.12.0",
     "@mui/icons-material": "^5.8.0",
     "@mui/material": "^5.8.0",
+    "@supabase/supabase-js": "^1.35.4",
     "a11y-react-emoji": "^1.2.0",
     "cosmicjs": "^4.1.7",
     "fullpage.js": "^4.0.9",
     "next": "12.1.6",
+    "nodemailer": "^6.7.5",
     "react": "^18.1.0",
     "react-dom": "18.1.0",
     "react-dropzone": "^14.2.1",
     "react-full-page": "^0.1.12",
-    "react-hot-toast": "^2.2.0",
-    "sib-api-v3-sdk": "^8.4.0"
+    "react-hot-toast": "^2.2.0"
   },
   "devDependencies": {
     "eslint": "8.16.0",

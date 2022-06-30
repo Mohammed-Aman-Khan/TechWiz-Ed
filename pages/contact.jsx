@@ -6,6 +6,8 @@ import Typography from '@mui/material/Typography'
 import { useBreakpoint, usePadding, useResponsiveFontSize, } from '../util/responsive'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import { IMAGES } from '../util/cdn-urls'
+import { showError, showSuccess } from '../util/alerts'
+import { useState } from 'react'
 
 const HeroText = ({ children, small, fontSize }) => {
     return <Typography
@@ -22,7 +24,7 @@ const HeroText = ({ children, small, fontSize }) => {
     </Typography>
 }
 
-const Input = ({ label = '', small, fontSize }) => {
+const Input = ({ label = '', small, fontSize, multiline = false, ...props }) => {
     return <TextField
         sx={ { marginBottom: small ? '12px' : '20px' } }
         fullWidth
@@ -30,6 +32,8 @@ const Input = ({ label = '', small, fontSize }) => {
         variant='standard'
         inputProps={ { sx: { fontSize } } }
         InputLabelProps={ { sx: { fontSize } } }
+        multiline={ multiline }
+        { ...props }
     />
 }
 
@@ -38,6 +42,78 @@ const Contact = () => {
     const small = useBreakpoint()
     const containerPadding = usePadding('container')
     const { h3, h6, body } = useResponsiveFontSize()
+    const [ name, setName ] = useState('')
+    const [ email, setEmail ] = useState('')
+    const [ phone, setPhone ] = useState('')
+    const [ querySubject, setQuerySubject ] = useState('')
+    const [ queryDescription, setQueryDescription ] = useState('')
+
+    const reset = () => {
+        setName('')
+        setEmail('')
+        setPhone('')
+        setQuerySubject('')
+        setQueryDescription('')
+    }
+
+    const onContact = async () => {
+        if (!name) {
+            showError('Name required')
+            return
+        }
+        if (!email) {
+            showError('Email required')
+            return
+        }
+        if (!phone) {
+            showError('Phone required')
+            return
+        }
+        if (!querySubject) {
+            showError('Subject required')
+            return
+        }
+        if (!queryDescription) {
+            showError('Description required')
+            return
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            showError('Invalid Email')
+            return
+        }
+
+        try {
+            fetch(
+                '/api/contact',
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name,
+                        email,
+                        phone,
+                        querySubject,
+                        queryDescription,
+                    }),
+                }
+            )
+                .then(response => response.json())
+                .then(response => {
+                    if (!response.status) {
+                        showError(response.error)
+                    }
+                    else {
+                        showSuccess('Query Submitted')
+                        reset()
+                    }
+                })
+        }
+        catch (err) {
+            showError(err.message)
+        }
+    }
 
     return <>
         <section className='section-100vh'>
@@ -143,31 +219,62 @@ const Contact = () => {
                                     item
                                     xs={ 12 } sm={ 12 } md={ 12 } lg={ 12 } xl={ 12 }
                                 >
-                                    <Input fontSize={ body } small={ small } label='Name' />
+                                    <Input
+                                        fontSize={ body }
+                                        small={ small }
+                                        label='Name'
+                                        value={ name }
+                                        onChange={ e => setName(e.target.value) }
+                                    />
                                 </Grid>
                                 <Grid
                                     item
                                     xs={ 12 } sm={ 12 } md={ 6 } lg={ 6 } xl={ 6 }
                                 >
-                                    <Input fontSize={ body } small={ small } label='Email' />
+                                    <Input
+                                        fontSize={ body }
+                                        small={ small }
+                                        label='Email'
+                                        value={ email }
+                                        onChange={ e => setEmail(e.target.value) }
+                                    />
                                 </Grid>
                                 <Grid
                                     item
                                     xs={ 12 } sm={ 12 } md={ 6 } lg={ 6 } xl={ 6 }
                                 >
-                                    <Input fontSize={ body } small={ small } label='Phone Number' />
+                                    <Input
+                                        fontSize={ body }
+                                        small={ small }
+                                        label='Phone Number'
+                                        value={ phone }
+                                        onChange={ e => setPhone(e.target.value) }
+                                    />
                                 </Grid>
                                 <Grid
                                     item
                                     xs={ 12 } sm={ 12 } md={ 12 } lg={ 12 } xl={ 12 }
                                 >
-                                    <Input fontSize={ body } small={ small } label='Query Subject' />
+                                    <Input
+                                        fontSize={ body }
+                                        small={ small }
+                                        label='Query Subject'
+                                        value={ querySubject }
+                                        onChange={ e => setQuerySubject(e.target.value) }
+                                    />
                                 </Grid>
                                 <Grid
                                     item
                                     xs={ 12 } sm={ 12 } md={ 12 } lg={ 12 } xl={ 12 }
                                 >
-                                    <Input fontSize={ body } small={ small } label='Description' />
+                                    <Input
+                                        fontSize={ body }
+                                        small={ small }
+                                        label='Description'
+                                        multiline
+                                        value={ queryDescription }
+                                        onChange={ e => setQueryDescription(e.target.value) }
+                                    />
                                 </Grid>
                             </Grid>
                             <br />
@@ -185,6 +292,7 @@ const Contact = () => {
                                         color: '#5080FF',
                                     },
                                 } }
+                                onClick={ onContact }
                             >
                                 Submit
                             </Button>

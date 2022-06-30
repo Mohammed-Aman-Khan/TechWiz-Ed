@@ -11,6 +11,8 @@ import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined'
 import { useBreakpoint, usePadding, useResponsiveFontSize } from '../util/responsive'
 import { useTheme } from '@mui/material'
 import { IMAGES } from '../util/cdn-urls'
+import { showError, showSuccess } from '../util/alerts'
+import { uploadResume, getLink } from '../util/supabase'
 
 const HeroText = ({ children, small, fontSize }) => {
     return <Typography
@@ -65,7 +67,91 @@ const Careers = () => {
     const containerPadding = usePadding('container')
     const { h2, h4, h5, h6, body } = useResponsiveFontSize()
     const [ jobType, setJobType ] = useState('Full Time')
+    const [ name, setName ] = useState('')
+    const [ email, setEmail ] = useState('')
+    const [ jobRole, setJobRole ] = useState('')
+    const [ phone, setPhone ] = useState('')
+    const [ skills, setSkills ] = useState('')
     const [ files, setFiles ] = useState([])
+
+    const reset = () => {
+        setJobType('Full Time')
+        setName('')
+        setEmail('')
+        setJobRole('')
+        setPhone('')
+        setSkills('')
+        setFiles([])
+    }
+
+    const onApply = async () => {
+
+        if (!name) {
+            showError('Name required')
+            return
+        }
+        if (!email) {
+            showError('Email required')
+            return
+        }
+        if (!phone) {
+            showError('Phone required')
+            return
+        }
+        if (!jobRole) {
+            showError('Job Role required')
+            return
+        }
+        if (!skills) {
+            showError('Skills required')
+            return
+        }
+        if (!files.length) {
+            showError('Resume PDF File required')
+            return
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            showError('Invalid Email')
+            return
+        }
+
+        try {
+            const { fileName } = await uploadResume(files[ 0 ])
+            const resume = getLink(fileName)
+
+            fetch(
+                '/api/career',
+                {
+                    method: 'POST',
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        email,
+                        jobType,
+                        name,
+                        phone,
+                        jobRole,
+                        skills,
+                        resume,
+                    }),
+                }
+            )
+                .then(response => response.json())
+                .then(response => {
+                    if (!response.status) {
+                        showError(response.error)
+                    }
+                    else {
+                        showSuccess('Application Submitted')
+                        reset()
+                    }
+                })
+        }
+        catch (error) {
+            showError(error.message)
+        }
+    }
 
     return <>
         <section className="section-100vh">
@@ -199,31 +285,66 @@ const Careers = () => {
                     item
                     xs={ 12 }
                 >
-                    <Input fontSize={ body } small={ small } label='Name' type='text' />
+                    <Input
+                        fontSize={ body }
+                        small={ small }
+                        label='Name'
+                        type='text'
+                        value={ name }
+                        onChange={ e => setName(e.target.value) }
+                    />
                 </Grid>
                 <Grid
                     item
                     xs={ 12 } sm={ 6 }
                 >
-                    <Input fontSize={ body } small={ small } label='Email' type='email' />
+                    <Input
+                        fontSize={ body }
+                        small={ small }
+                        label='Email'
+                        type='email'
+                        value={ email }
+                        onChange={ e => setEmail(e.target.value) }
+                    />
                 </Grid>
                 <Grid
                     item
                     xs={ 12 } sm={ 6 }
                 >
-                    <Input fontSize={ body } small={ small } label='Phone' type='tel' />
+                    <Input
+                        fontSize={ body }
+                        small={ small }
+                        label='Phone'
+                        type='tel'
+                        value={ phone }
+                        onChange={ e => setPhone(e.target.value) }
+                    />
                 </Grid>
                 <Grid
                     item
                     xs={ 12 }
                 >
-                    <Input fontSize={ body } small={ small } label='Job Role' type='text' />
+                    <Input
+                        fontSize={ body }
+                        small={ small }
+                        label='Job Role'
+                        type='text'
+                        value={ jobRole }
+                        onChange={ e => setJobRole(e.target.value) }
+                    />
                 </Grid>
                 <Grid
                     item
                     xs={ 12 }
                 >
-                    <Input fontSize={ body } small={ small } label='Skills' type='text' />
+                    <Input
+                        fontSize={ body }
+                        small={ small }
+                        label='Skills'
+                        type='text'
+                        value={ skills }
+                        onChange={ e => setSkills(e.target.value) }
+                    />
                 </Grid>
                 <Grid
                     item
@@ -302,6 +423,7 @@ const Careers = () => {
                                 color: '#5080FF',
                             },
                         } }
+                        onClick={ onApply }
                     >
                         Submit
                     </Button>

@@ -7,7 +7,7 @@ import Button from '@mui/material/Button'
 import InputAdornment from '@mui/material/InputAdornment'
 import Link from 'next/link'
 import { useTheme, useMediaQuery } from '@mui/material'
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 import { useResponsiveFontSize } from '../../util/responsive'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import TwitterIcon from '@mui/icons-material/Twitter'
@@ -17,6 +17,8 @@ import FacebookIcon from '@mui/icons-material/Facebook'
 import CopyrightIcon from '@mui/icons-material/Copyright'
 import Stack from '@mui/material/Stack'
 import { ThemeProvider, createTheme } from '@mui/material'
+import { subscribe } from '../../util/sib'
+import { showError } from '../../util/alerts'
 
 const Links = [
     {
@@ -93,6 +95,27 @@ const Footer = () => {
     const small = useMediaQuery(breakpoints.down('md'))
     const medium = useMediaQuery(breakpoints.down('lg'))
     const { h5, h6, caption, helper } = useResponsiveFontSize()
+    const [ email, setEmail ] = useState('')
+
+    const onSubscribeClick = async e => {
+        e.preventDefault()
+
+        if (!email) {
+            return
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            showError('Invalid Email')
+            return
+        }
+
+        try {
+            const result = await subscribe(email)
+            console.log(result)
+        }
+        catch (err) {
+            showError(err.message)
+        }
+    }
 
     return <>
         <Head>
@@ -185,6 +208,7 @@ const Footer = () => {
                                                         borderRadius: '0px 18px 18px 0px',
                                                         fontSize: caption,
                                                     } }
+                                                    onClick={ onSubscribeClick }
                                                 >
                                                     Subscribe
                                                 </Button>
@@ -198,6 +222,8 @@ const Footer = () => {
                                         },
                                         disableUnderline: true,
                                     } }
+                                    value={ email }
+                                    onChange={ e => setEmail(e.target.value) }
                                 />
                             </ThemeProvider>
                         </form>
