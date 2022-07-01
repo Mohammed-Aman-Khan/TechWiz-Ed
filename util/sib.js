@@ -1,6 +1,6 @@
 // import { ApiClient, ContactsApi, CreateContact } from 'sib-api-v3-sdk'
 
-export const API_KEY = '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'
+export const API_KEY = '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'
 
 // export const subscribe = async email => {
 //     const defaultClient = ApiClient.instance
@@ -17,7 +17,7 @@ export const API_KEY = 'xkeysib-390a4d267c05383730fe3b5ce6aab22051c27463c0fb2f68
 // }
 
 export const subscribe = async email => {
-    return await fetch(
+    const response = await fetch(
         'https://api.sendinblue.com/v3/contacts',
         {
             method: 'post',
@@ -35,4 +35,6 @@ export const subscribe = async email => {
             }),
         }
     )
+
+    return response.json()
 }

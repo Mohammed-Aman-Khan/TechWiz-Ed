@@ -18,7 +18,7 @@ import CopyrightIcon from '@mui/icons-material/Copyright'
 import Stack from '@mui/material/Stack'
 import { ThemeProvider, createTheme } from '@mui/material'
 import { subscribe } from '../../util/sib'
-import { showError } from '../../util/alerts'
+import { showSuccess } from '../../util/alerts'
 
 const Links = [
     {
@@ -110,7 +110,12 @@ const Footer = () => {
 
         try {
             const result = await subscribe(email)
-            console.log(result)
+            if (result.id) {
+                showSuccess('Thank you for suscribing')
+            }
+            else {
+                showSuccess(result.message)
+            }
         }
         catch (err) {
             showError(err.message)
