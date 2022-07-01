@@ -1,6 +1,6 @@
 // import { ApiClient, ContactsApi, CreateContact } from 'sib-api-v3-sdk'
 
-export const API_KEY = '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'
+export const API_KEY = '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'
 
 // export const subscribe = async email => {
 //     const defaultClient = ApiClient.instance
