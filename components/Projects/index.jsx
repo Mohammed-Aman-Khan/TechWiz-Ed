@@ -44,7 +44,7 @@ const Project = ({
             </Grid>
             <Grid
                 container item
-                xs={ 12 } sm={ 12 } md={ 12 } lg={ 8 } xl={ 8 }
+                xs={ 12 } sm={ 12 } md={ 12 } lg={ 7 } xl={ 7 }
             >
                 {
                     !small ? <>
@@ -149,7 +149,7 @@ const Project = ({
             </Grid>
             <Grid
                 container item
-                xs={ 12 } sm={ 12 } md={ 12 } lg={ 4 } xl={ 4 }
+                xs={ 12 } sm={ 12 } md={ 12 } lg={ 5 } xl={ 5 }
                 alignItems='center'
                 justifyContent='center'
                 sx={ {
