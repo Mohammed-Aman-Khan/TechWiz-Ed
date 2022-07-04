@@ -3,8 +3,22 @@ import Grid from '@mui/material/Grid'
 import Paper from '@mui/material/Paper'
 import { FullPage, Slide } from 'react-full-page'
 import { useResponsiveFontSize } from '../../util/responsive'
+import Chip from '@mui/material/Chip'
+
+const getColor = index => {
+    return (index + 1) % 3 === 0
+        ?
+        '#AAA7FF'
+        :
+        (index + 1) % 2 === 0
+            ?
+            '#FFB78D'
+            :
+            '#86E195'
+}
 
 const Project = ({
+    index,
     projectName,
     projectCategory,
     animation,
@@ -97,14 +111,24 @@ const Project = ({
                             overflowY: 'auto'
                         } }
                     >
-                        <Typography
-                            sx={ {
-                                fontSize: h6,
-                                fontWeight: 600
-                            } }
-                        >
-                            Features
-                        </Typography>
+                        <div>
+                            <Chip
+                                label={ '01' }
+                                sx={ {
+                                    backgroundColor: getColor(index),
+                                    color: 'white',
+                                } }
+                            />
+                            <br />
+                            <Typography
+                                sx={ {
+                                    fontSize: h6,
+                                    fontWeight: 600
+                                } }
+                            >
+                                Features
+                            </Typography>
+                        </div>
                         <Typography
                             sx={ {
                                 fontSize: helper,
@@ -129,14 +153,24 @@ const Project = ({
                             overflowY: 'auto'
                         } }
                     >
-                        <Typography
-                            sx={ {
-                                fontSize: h6,
-                                fontWeight: 600
-                            } }
-                        >
-                            Learning
-                        </Typography>
+                        <div>
+                            <Chip
+                                label={ '02' }
+                                sx={ {
+                                    backgroundColor: getColor(index),
+                                    color: 'white',
+                                } }
+                            />
+                            <br />
+                            <Typography
+                                sx={ {
+                                    fontSize: h6,
+                                    fontWeight: 600
+                                } }
+                            >
+                                Learning
+                            </Typography>
+                        </div>
                         <Typography
                             sx={ {
                                 fontSize: helper,
@@ -214,12 +248,13 @@ const ProjectView = ({ projects = [], small }) => {
                         features,
                         learning,
                         aboutProject,
-                    }) =>
+                    }, index) =>
                         <Slide
                             key={ projectName }
                         >
                             <Project
                                 { ...{
+                                    index,
                                     projectName,
                                     projectCategory,
                                     animation,
