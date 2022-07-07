@@ -96,7 +96,7 @@ const About = () => {
                                 color: '#6E7387'
                             } }
                         >
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Non amet, adipiscing quis sit et, rutrum sit cras.
+                            We aim to provide Ed-Tech based products and services to make technology more reachable, teachable and learn-able. We want to stand together with enthusiasts, learners and dreamers to help them understand technical concepts with hands-on experience.
                         </Typography>
                     </Grid>
                     <Grid
@@ -173,7 +173,7 @@ const About = () => {
                                 color: '#6E7387'
                             } }
                         >
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Non amet, adipiscing quis sit et, rutrum sit cras.
+                            We're one among the handful trying to make advanced technical concepts reach every nook and corner of India, with a dream to make it worldwide.
                         </Typography>
                     </Grid>
                     {
@@ -291,7 +291,11 @@ const About = () => {
                                 color: '#6E7387',
                             } }
                         >
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tristique id mauris velit vulputate lectus libero, est. Sed ultrices malesuada senectus lectus lectus bibendum turpis montes, sit. Dis sagittis amet, pulvinar urna, velit tincidunt turpis nec. Turpis mauris sapien ut id. Sed ullamcorper eu, sed condimentum elit aliquam. Aliquet mauris, est morbi diam quis elit nibh nibh consectetur. Nunc nunc pulvinar donec sed libero cursus.
+                            Developing futuristic Ed-Tech products; Ed-phone is our first step towards achieving this goal.
+                            <br />
+                            Working with schools and colleges to set up better curriculum through Faculty Development Programs and Student Workshops.
+                            <br />
+                            Developing Learning Management System for enthusiasts to take up online courses which cover various technical domains with unlimited access to the content.
                         </Typography>
                     </center>
                 </Grid>
@@ -348,7 +352,11 @@ const About = () => {
                                 color: '#6E7387'
                             } }
                         >
-                            Futuristic product like Ed-Phone and other services like LMS platform, Faculty Development Programs and Student workshops are the steps taken to realize our vision.
+                            To develop Ed-Tech based products to help students, enthusiasts learn advanced technical concepts with hands-on experience.
+                            <br /><br />
+                            To provide most earnest consultancy services to upgrade technology in education field by teaching students, lecturers and corporate professionals, about technical concepts using modern, intuitive, simple and hands-on method.
+                            <br /><br />
+                            To conduct online/offline cutting edge technological career building courses, such as Embedded systems, AI/ML, Blockchain, IoT, Networking and Ethical hacking.
                         </Typography>
                     </Grid>
                 </Grid>

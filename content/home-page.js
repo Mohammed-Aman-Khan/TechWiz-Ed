@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export const TESTIMONIALS = [
     {
         title: 'Great way to boost work culture whilst working',
@@ -66,19 +68,19 @@ export const WHAT_CAN_ED_DO = [
 
 export const QUESTIONS = [
     {
-        question: 'How does it work?',
-        answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit massa diam in fermentum morbi proin et vestibulum sodales.',
+        question: 'How can I contribute to the company?',
+        answer: <>You can fill in the required details on the <Link href='/careers'>Careers page</Link>.</>,
     },
     {
-        question: 'Are there any additional charges?',
-        answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit massa diam in fermentum morbi proin et vestibulum sodales.',
+        question: 'How can I contact for my project assistant?',
+        answer: <>You can fill in the required details on the <Link href='/contact'>Contact page</Link>.</>,
     },
     {
-        question: 'How can I purchase the product?',
-        answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit massa diam in fermentum morbi proin et vestibulum sodales.',
+        question: 'What field of expertise do you provide?',
+        answer: <>We offer different expertise in the field of Embedded Systems, Mechanical Engineering, Artificial Intelligence, Blockchain, Robotics.</>,
     },
     {
-        question: 'What features do you offer an what not?',
-        answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit massa diam in fermentum morbi proin et vestibulum sodales.',
+        question: 'Do you provide industrial expertise?',
+        answer: <>We offer industry automation, smart campus and other Industry 4.0 services.</>,
     },
 ]

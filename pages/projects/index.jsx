@@ -101,7 +101,7 @@ const Projects = () => {
                             color: '#6E7387',
                         } }
                     >
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus quis vulputate ipsum, massa ac suspendisse laoreet amet egestas. Felis iaculis.
+                        To get you started here are a few interesting projects on different domains that show the endless possibilities of ED-phone.
                     </Typography>
                     <br /><br /><br /><br /><br />
                     <Grid

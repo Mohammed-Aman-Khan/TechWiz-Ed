@@ -174,7 +174,7 @@ const LandingPage = () => {
                                         fontSize: h6
                                     } }
                                 >
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus quis vulputate ipsum, massa ac suspendisse laoreet amet egestas. Felis iaculis.
+                                    Transforming students and enthusiasts into a technical wizard, who can find their path in becoming a professional.
                                 </Typography>
                             </center> :
                             <Typography
@@ -186,7 +186,7 @@ const LandingPage = () => {
                                     fontSize: h6
                                 } }
                             >
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus quis vulputate ipsum, massa ac suspendisse laoreet amet egestas. Felis iaculis.
+                                Transforming students and enthusiasts into a technical wizard, who can find their path in becoming a professional.
                             </Typography>
                     }
                     <br /><br />
@@ -317,7 +317,7 @@ const LandingPage = () => {
                             fontSize: h6
                         } }
                     >
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam
+                        The features of ED-phone that can be used to develop and learn trending technologies.
                     </Typography>
                 </center>
                 <Grid item xs={ 12 }>&nbsp;</Grid>
@@ -420,7 +420,7 @@ const LandingPage = () => {
                             fontSize: h6,
                         } }
                     >
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam
+                        The various projects that can be achieved using ED-Phone.
                     </Typography>
                     <br /><br />
                     <video controls style={ { width: small ? '100%' : '80%', height: 'auto', outline: 'none', borderRadius: 10 } }>
@@ -588,7 +588,7 @@ const LandingPage = () => {
                                         fontSize: h6,
                                     } }
                                 >
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nisi mi convallis tempor, pellentesque elit vitae aliquet vitae.
+                                    Check out what our customers think about us!
                                 </Typography>
                             </center>
                         </Grid>
@@ -675,7 +675,7 @@ const LandingPage = () => {
                                 color: '#6E7387',
                             } }
                         >
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ante nullam donec orci, pharetra ullamcorper tristique tempus sit.
+                            List of FAQs to keep you hustle free
                         </Typography>
                     </Grid>
                     <Grid

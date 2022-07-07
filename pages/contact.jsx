@@ -163,7 +163,9 @@ const Contact = () => {
                                 color: '#6E7387'
                             } }
                         >
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus quis vulputate ipsum, massa ac suspendisse laoreet amet egestas. Felis iaculis.
+                            Bengaluru remains the top start up hub with a well-developed ecosystem, deep technology talent, and a culture of entrepreneurship.
+                            <br />
+                            Come visit us to be a part of our young and energetic team right here in Bangalore!
                         </Typography>
                     </Grid>
                 </Grid>
@@ -176,7 +178,7 @@ const Contact = () => {
                 >
                     { small ? <><br /><br /></> : <></> }
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.995799101861!2d77.55993461482132!3d12.90799129089761!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1562a0e35733%3A0x52f0774be1144a97!2s940%2C%2016th%20Cross%20Rd%2C%201st%20Stage%2C%20Kumaraswamy%20Layout%2C%20Bengaluru%2C%20Karnataka%20560078!5e0!3m2!1sen!2sin!4v1652617863244!5m2!1sen!2sin"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.997171553433!2d77.55733412959377!3d12.907903061783932!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3fd80a58ef61%3A0xda2ad8d9bdec7671!2s944%2C%2016th%20Cross%20Rd%2C%201st%20Stage%2C%20Kumaraswamy%20Layout%2C%20Bengaluru%2C%20Karnataka%20560078!5e0!3m2!1sen!2sin!4v1657213614997!5m2!1sen!2sin"
                         allowFullScreen=""
                         loading="lazy"
                         referrerPolicy="no-referrer-when-downgrade"
@@ -305,7 +307,13 @@ const Contact = () => {
                     alignItems='center'
                     xs={ 12 } sm={ 12 } md={ 12 } lg={ 6 } xl={ 6 }
                 >
-                    <Grid item>
+                    <Grid
+                        item
+                        sx={ {
+                            width: small ? '100%' : '90%',
+                            height: '100%',
+                        } }
+                    >
                         <img
                             src={ IMAGES.CONTACT_PAGE.CONTACT }
                             style={ {
