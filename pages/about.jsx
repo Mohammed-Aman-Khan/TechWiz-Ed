@@ -173,7 +173,7 @@ const About = () => {
                                 color: '#6E7387'
                             } }
                         >
-                            We're one among the handful trying to make advanced technical concepts reach every nook and corner of India, with a dream to make it worldwide.
+                            We&apos;re one among the handful trying to make advanced technical concepts reach every nook and corner of India, with a dream to make it worldwide.
                         </Typography>
                     </Grid>
                     {
